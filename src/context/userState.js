@@ -9,10 +9,18 @@ const UserState = props => {
     }
 
     const [state, dispatch] = useReducer(UserReducer, initialState)
+
+    const login = result => {
+        dispatch({
+            type: "LOGIN",
+            payload: result
+        })
+    }
     
     return (<UserContext.Provider 
         value={{
-            userState: state
+            userState: state,
+            login
         }}
     >
         {props.children}

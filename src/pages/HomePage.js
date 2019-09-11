@@ -9,6 +9,15 @@ const HomePage = () => {
     const userContext = useContext(UserContext)
 
     const {isLoggedIn} = userContext.userState
+    const {login} = userContext
+
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(user => {
+            if(user) {
+                login(user)
+            }
+        })
+    }, [])
 
     if(!isLoggedIn) {
         return (
