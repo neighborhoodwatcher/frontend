@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-
-import HomePage from './HomePage'
+import UserContext from '../context/userContext'
 
 const LandingPage = () => {
+    const userContext = useContext(UserContext)
+
+    console.log(userContext)
+
     return (
         <div>
             <h1>Landing Page</h1>
