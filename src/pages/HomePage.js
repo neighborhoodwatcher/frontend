@@ -1,15 +1,23 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import UserContext from '../context/userContext'
+import SignIn from './SignIn';
+import 'firebase/auth'
+import firebase from 'firebase'
+import Navbar from '../components/Navigation/Navbar'
 
 const HomePage = () => {
     const userContext = useContext(UserContext)
 
-    const { isLoggedIn } = userContext.userState
-    console.log(isLoggedIn)
+    const {isLoggedIn} = userContext.userState
 
-    return (
+    if(!isLoggedIn) {
+        return (
+            <SignIn />
+        )
+    } else return (
         <div>
-            <h1>Home Page</h1>
+            <Navbar />
+            <h1>{`Hello ${userContext.userState.user.displayName}`}</h1>
         </div>
     )
 }

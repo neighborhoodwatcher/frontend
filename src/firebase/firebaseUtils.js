@@ -3,14 +3,14 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 const config = {
-    apiKey: "AIzaSyCKVr6o4VkpR8hZ3shDsQoymCVSqUfpQdw",
-    authDomain: "neighborhoodwatch-b6a0f.firebaseapp.com",
-    databaseURL: "https://neighborhoodwatch-b6a0f.firebaseio.com",
-    projectId: "neighborhoodwatch-b6a0f",
+    apiKey: "AIzaSyB0CZeaxILErwZabEV86lKrrypGKAu8efU",
+    authDomain: "city-watch-3327b.firebaseapp.com",
+    databaseURL: "https://city-watch-3327b.firebaseio.com",
+    projectId: "city-watch-3327b",
     storageBucket: "",
-    messagingSenderId: "71273987454",
-    appId: "1:71273987454:web:ed9dd988d6732e79"
-};
+    messagingSenderId: "177073538660",
+    appId: "1:177073538660:web:222459942cf43288f08171"
+  };
 
 firebase.initializeApp(config)
 
