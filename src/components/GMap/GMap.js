@@ -18,7 +18,7 @@ const GMap = withScriptjs(
       {props.isMarkerShown && (
         <Marker position={{ lat: -34.397, lng: 150.644 }} />
       )}
-      {console.log(props.coords)}
+      {console.log('props', props)}
     </GoogleMap>
   ))
 );

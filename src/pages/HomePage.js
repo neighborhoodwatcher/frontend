@@ -8,8 +8,8 @@ import SignIn from "./SignIn";
 
 const HomePage = () => {
   const userContext = useContext(UserContext);
-  const { isLoggedIn } = userContext.userState;
-  const { login } = userContext;
+  const { isLoggedIn, coordinates } = userContext.userState;
+  const { login, setCoordinates } = userContext;
 
   const [coords, setCoords] = useState({ lat: 0, lng: 0 });
 
@@ -25,7 +25,7 @@ const HomePage = () => {
 
   const getLocationOfUser = () => {
     navigator.geolocation.getCurrentPosition(position => {
-      setCoords({
+      setCoordinates({
         lat: position.coords.latitude,
         lng: position.coords.longitude
       });
@@ -39,13 +39,14 @@ const HomePage = () => {
       <div>
         <Navbar />
         <h1>{`Hello ${userContext.userState.user.displayName}`}</h1>
+        {console.log(userContext)}
         <GMap
           isMarkerShown={false}
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMP_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `50vh` }} />}
           mapElement={<div style={{ height: `100%` }} />}
-          coords={coords}
+          coords={coordinates}
         ></GMap>
       </div>
     );

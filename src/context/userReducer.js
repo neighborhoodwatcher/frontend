@@ -6,6 +6,11 @@ export default (state, action) => {
                 user: action.payload,
                 isLoggedIn: true
             }
+        case "SET_COORDS":
+            return {
+                ...state,
+                coordinates: action.payload
+            }
         default:
             return state
     }
