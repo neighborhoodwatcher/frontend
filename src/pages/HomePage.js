@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../context/userContext";
 import SignIn from "./SignIn";
 import "firebase/auth";
@@ -9,8 +9,16 @@ import GMap from "../components/GMap/GMap";
 const HomePage = () => {
   const userContext = useContext(UserContext);
 
+  const [coords, setCoords] = useState({})
+
   const { isLoggedIn } = userContext.userState;
   const { login } = userContext;
+
+  const getLocationOfUser = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      setCoords(position.coords)
+    })
+  }
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
@@ -18,6 +26,7 @@ const HomePage = () => {
         login(user);
       }
     });
+    getLocationOfUser()
   }, []);
 
   if (!isLoggedIn) {
@@ -33,6 +42,7 @@ const HomePage = () => {
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `50vh` }} />}
           mapElement={<div style={{ height: `100%` }} />}
+          coords={coords}
         ></GMap>
       </div>
     );
