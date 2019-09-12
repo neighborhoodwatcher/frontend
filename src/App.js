@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage'
 import Forum from './pages/Forum'
 import Settings from './pages/Settings'
 import UserContext from './context/userContext'
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute"
 
 function App() {
   const userContext = useContext(UserContext)
@@ -23,9 +24,9 @@ function App() {
               <LandingPage/>
             )
           )} />
-          <Route path='/homepage' component={HomePage} />
-          <Route path='/forum' component={Forum} />
-          <Route path='/settings' component={Settings} />
+          <PrivateRoute path='/homepage' component={HomePage} />
+          <PrivateRoute path='/forum' component={Forum} />
+          <PrivateRoute path='/settings' component={Settings} />
         </Switch>
     </div>
   );

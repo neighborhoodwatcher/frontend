@@ -1,47 +1,48 @@
-import React, { useReducer } from 'react'
-import UserContext from './userContext'
-import UserReducer from './userReducer'
+import React, { useReducer } from "react";
+import UserContext from "./userContext";
+import UserReducer from "./userReducer";
 
 const UserState = props => {
-    const initialState = {
-        user: {},
-        isLoggedIn: false,
-        coordinates: { lat: 0, lng: 0 }
-    }
+  const initialState = {
+    user: {},
+    isLoggedIn: false,
+    coordinates: { lat: 0, lng: 0 }
+  };
 
-    const [state, dispatch] = useReducer(UserReducer, initialState)
+  const [state, dispatch] = useReducer(UserReducer, initialState);
 
-    const login = result => {
-        dispatch({
-            type: "LOGIN",
-            payload: result
-        })
-    }
+  const login = result => {
+    dispatch({
+      type: "LOGIN",
+      payload: result
+    });
+  };
 
-    const logout = () => {
-        dispatch({
-            type: "LOGOUT"
-        })
-    }
+  const logout = () => {
+    dispatch({
+      type: "LOGOUT"
+    });
+  };
 
-    const setCoordinates = coordinates => {
-        dispatch({
-            type: "SET_COORDS",
-            payload: coordinates
-        })
-    }
-    
-    return (<UserContext.Provider 
-        value={{
-            userState: state,
-            login,
-            logout,
-            setCoordinates
-        }}
+  const setCoordinates = coordinates => {
+    dispatch({
+      type: "SET_COORDS",
+      payload: coordinates
+    });
+  };
+
+  return (
+    <UserContext.Provider
+      value={{
+        userState: state,
+        login,
+        logout,
+        setCoordinates
+      }}
     >
-        {props.children}
+      {props.children}
     </UserContext.Provider>
-    )
-}
+  );
+};
 
 export default UserState;
