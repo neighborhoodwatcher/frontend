@@ -18,6 +18,12 @@ const UserState = props => {
         })
     }
 
+    const logout = () => {
+        dispatch({
+            type: "LOGOUT"
+        })
+    }
+
     const setCoordinates = coordinates => {
         dispatch({
             type: "SET_COORDS",
@@ -29,6 +35,7 @@ const UserState = props => {
         value={{
             userState: state,
             login,
+            logout,
             setCoordinates
         }}
     >
