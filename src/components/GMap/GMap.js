@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {
   withScriptjs,
   withGoogleMap,
@@ -6,8 +6,15 @@ import {
   Marker
 } from "react-google-maps";
 
-const GMap = withScriptjs(withGoogleMap((props) => (
-    <GoogleMap defaultZoom={8} defaultCenter={{ lat: props.coords.latitude, lng: props.coords.longitude }}>
+const GMap = withScriptjs(
+  withGoogleMap(props => (
+    <GoogleMap
+      defaultZoom={8}
+      defaultCenter={{
+        lat: props.coords.lat,
+        lng: props.coords.lng
+      }}
+    >
       {props.isMarkerShown && (
         <Marker position={{ lat: -34.397, lng: 150.644 }} />
       )}
@@ -17,8 +24,3 @@ const GMap = withScriptjs(withGoogleMap((props) => (
 );
 
 export default GMap;
-
-{
-  /* <MyMapComponent isMarkerShown />// Map with a Marker
-<MyMapComponent isMarkerShown={false} />// Just only Map */
-}

@@ -1,24 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import UserContext from "../context/userContext";
-import SignIn from "./SignIn";
-import "firebase/auth";
 import firebase from "firebase";
-import Navbar from "../components/Navigation/Navbar";
+import "firebase/auth";
+import UserContext from "../context/userContext";
 import GMap from "../components/GMap/GMap";
+import Navbar from "../components/Navigation/Navbar";
+import SignIn from "./SignIn";
 
 const HomePage = () => {
   const userContext = useContext(UserContext);
-
-  const [coords, setCoords] = useState({})
-
   const { isLoggedIn } = userContext.userState;
   const { login } = userContext;
 
-  const getLocationOfUser = () => {
-    navigator.geolocation.getCurrentPosition(position => {
-      setCoords(position.coords)
-    })
-  }
+  const [coords, setCoords] = useState({ lat: 0, lng: 0 });
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
@@ -26,8 +19,18 @@ const HomePage = () => {
         login(user);
       }
     });
-    getLocationOfUser()
+    console.log(coords);
+    getLocationOfUser();
   }, []);
+
+  const getLocationOfUser = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      setCoords({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      });
+    });
+  };
 
   if (!isLoggedIn) {
     return <SignIn />;
