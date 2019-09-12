@@ -6,7 +6,7 @@ const UserState = props => {
     const initialState = {
         user: {},
         isLoggedIn: false,
-        coordinates: {}
+        coordinates: { lat: 0, lng: 0 }
     }
 
     const [state, dispatch] = useReducer(UserReducer, initialState)

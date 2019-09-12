@@ -4,23 +4,20 @@ import "firebase/auth";
 import UserContext from "../context/userContext";
 import GMap from "../components/GMap/GMap";
 import Navbar from "../components/Navigation/Navbar";
-import SignIn from "./SignIn";
+import SignIn from "./SignIn/SignIn";
 
 const HomePage = () => {
   const userContext = useContext(UserContext);
   const { isLoggedIn, coordinates } = userContext.userState;
   const { login, setCoordinates } = userContext;
 
-  const [coords, setCoords] = useState({ lat: 0, lng: 0 });
-
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         login(user);
+        getLocationOfUser();
       }
     });
-    console.log(coords);
-    getLocationOfUser();
   }, []);
 
   const getLocationOfUser = () => {
@@ -39,7 +36,6 @@ const HomePage = () => {
       <div>
         <Navbar />
         <h1>{`Hello ${userContext.userState.user.displayName}`}</h1>
-        {console.log(userContext)}
         <GMap
           isMarkerShown={false}
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMP_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
