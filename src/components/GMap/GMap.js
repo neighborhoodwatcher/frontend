@@ -5,6 +5,7 @@ import {
   GoogleMap,
   Marker
 } from "react-google-maps";
+import places from "./places";
 
 const GMap = withScriptjs(
   withGoogleMap(props => (
@@ -15,10 +16,8 @@ const GMap = withScriptjs(
         lng: props.coords.lng
       }}
     >
-      {props.isMarkerShown && (
-        <Marker position={{ lat: -34.397, lng: 150.644 }} />
-      )}
-      {console.log('props', props)}
+      {props.isMarkerShown && <Marker position={{ lat: 37, lng: -122 }} />}
+      {console.log("props", props)}
     </GoogleMap>
   ))
 );
