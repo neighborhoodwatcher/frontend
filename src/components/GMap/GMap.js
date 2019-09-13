@@ -3,20 +3,24 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker
+  Marker,
+  InfoWindow
 } from "react-google-maps";
 import places from "./places";
 
 const GMap = withScriptjs(
   withGoogleMap(props => {
     const [clickCoord, setClickCoord] = useState({});
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleClick = event => {
       const lat = event.latLng.lat();
       const lng = event.latLng.lng();
-      console.log(lat, lng);
       setClickCoord({ lat, lng });
-      console.log(clickCoord)
+    };
+
+    const onToggleOpen = () => {
+      setIsOpen(!isOpen);
     };
 
     return (
@@ -28,8 +32,18 @@ const GMap = withScriptjs(
         }}
         onClick={event => handleClick(event)}
       >
-        {props.isMarkerShown && <Marker position={{ lat: clickCoord.lat, lng: clickCoord.lng }} />}
-        {console.log("props", props)}
+        {props.isMarkerShown && (
+          <Marker
+            position={{ lat: clickCoord.lat, lng: clickCoord.lng }}
+            onClick={onToggleOpen}
+          >
+            {isOpen && (
+              <InfoWindow onCloseClick={onToggleOpen}>
+                <p>THIS IS AN INFO WINDOW!!!</p>
+              </InfoWindow>
+            )}
+          </Marker>
+        )}
       </GoogleMap>
     );
   })
