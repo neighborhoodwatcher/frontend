@@ -34,12 +34,17 @@ const GMap = withScriptjs(
       >
         {props.isMarkerShown && (
           <Marker
-            position={{ lat: clickCoord.lat, lng: clickCoord.lng }}
+            position={{ lat: parseFloat(clickCoord.lat), lng: parseFloat(clickCoord.lng) }}
             onClick={onToggleOpen}
           >
             {isOpen && (
               <InfoWindow onCloseClick={onToggleOpen}>
-                <p>THIS IS AN INFO WINDOW!!!</p>
+                <div>
+                  <p>THIS IS AN INFO WINDOW!!!</p>
+                  <p>HELLO</p>
+                  <h1>welcome</h1>
+                  <h2>test</h2>
+                </div>
               </InfoWindow>
             )}
           </Marker>
