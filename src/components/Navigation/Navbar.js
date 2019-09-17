@@ -9,11 +9,11 @@ const Navbar = () => {
 
     return (
         <div className="nav-container">
-            <div>
-                <Link to="/homepage">Home</Link>
-                <Link to="/forum">Forum</Link>
-                <Link to="/settings">Settings</Link>
-                <button onClick={logout}>Sign Out</button>
+            <div className="nav-items-container" >
+                <Link style={{ textDecoration: 'none', marginRight: '20px', color: 'black' }} to="/homepage">Home</Link>
+                <Link style={{ textDecoration: 'none', marginRight: '20px', color: 'black' }} to="/forum">Forum</Link>
+                <Link style={{ textDecoration: 'none', marginRight: '20px', color: 'black' }} to="/settings">Settings</Link>
+                <Link style={{ textDecoration: 'none', marginRight: '20px', color: 'black' }} onClick={logout}>Sign Out</Link>
             </div>
         </div>
     )

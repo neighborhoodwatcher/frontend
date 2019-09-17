@@ -1,5 +1,10 @@
 .nav-container {
     display: flex;
     justify-content: flex-end;
-    font-size: 26px
+    font-size: 26px;
+    background: slategray
+}
+
+.nav-items-container {
+    margin: 5px 0 5px 0;
 }
