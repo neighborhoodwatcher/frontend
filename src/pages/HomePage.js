@@ -6,7 +6,10 @@ import UserContext from "../context/userContext";
 import GMap from "../components/GMap/GMap";
 import Navbar from "../components/Navigation/Navbar";
 import SignIn from "./SignIn/SignIn";
-import Dashboard from '../components/Dashboard/Dashboard'
+import Dashboard from "../components/Dashboard/Dashboard";
+
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
 const HomePage = () => {
   const userContext = useContext(UserContext);
@@ -19,7 +22,7 @@ const HomePage = () => {
         login(user);
         getLocationOfUser();
       }
-    });
+    })
   }, []);
 
   const getLocationOfUser = () => {
@@ -30,6 +33,16 @@ const HomePage = () => {
       });
     });
   };
+
+  // const GET_USERS = gql`
+  //   query getUsers {
+  //     users {
+  //       displayName
+  //     }
+  //   }
+  // `;
+
+  // const { data } = useQuery(GET_USERS);
 
   if (!isLoggedIn) {
     return <SignIn />;
@@ -46,6 +59,7 @@ const HomePage = () => {
           coords={coordinates}
         ></GMap>
         <Dashboard />
+        {/* <div>{data}</div> */}
       </div>
     );
 };
