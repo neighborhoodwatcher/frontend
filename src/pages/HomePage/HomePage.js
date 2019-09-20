@@ -7,14 +7,9 @@ import GMap from "../../components/GMap/GMap";
 import Navbar from "../../components/Navigation/Navbar";
 import SignIn from "../SignIn/SignIn";
 import Dashboard from "../../components/Dashboard/Dashboard";
-<<<<<<< HEAD
-import "./HomePage.scss"
-import LocalEvents from '../../components/LocalEvents/LocalEvents'
-import NewsFeed from '../../components/NewsFeed/NewsFeed';
-=======
 import "./HomePage.scss";
 import LocalEvents from "../../components/LocalEvents/LocalEvents";
->>>>>>> ae88c108f7391f881ee95c6f0805d4997f6aaf34
+import CreateEvents from '../../components/CreateEvent/CreateEvent'
 
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
@@ -71,6 +66,7 @@ const HomePage = () => {
       <div className="dash-container">
         <Dashboard />
         <LocalEvents />
+        <CreateEvents />
       </div>
     </div>
   );
