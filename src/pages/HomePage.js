@@ -10,7 +10,6 @@ import Dashboard from "../components/Dashboard/Dashboard";
 
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
-import { Query } from "react-apollo";
 
 const HomePage = () => {
   const userContext = useContext(UserContext);
@@ -35,6 +34,7 @@ const HomePage = () => {
     });
   };
 
+  // Apollo query
   const GET_USERS = gql`
     {
       users {
@@ -49,32 +49,29 @@ const HomePage = () => {
   if (!isLoggedIn) {
     return <SignIn />;
   } else if (loading) return <div>Loading...</div>;
-    return (
+  return (
+    <div>
+      <Navbar />
+      <GMap
+        isMarkerShown={true}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMP_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
+        loadingElement={<div style={{ height: `100%` }} />}
+        containerElement={<div style={{ height: `45vh` }} />}
+        mapElement={<div style={{ height: `100%` }} />}
+        coords={coordinates}
+      ></GMap>
+      <div></div>
+      <Dashboard />
+
       <div>
-        <Navbar />
-        <GMap
-          isMarkerShown={true}
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMP_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `45vh` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          coords={coordinates}
-        ></GMap>
-        <div></div>
-        <Dashboard />
-
-        <div>
-          
-          {data.users.map(user => (
-            <p>
-              {user.displayName}, {user.area_code}
-            </p>
-          ))}
-
-          {console.log("data", data)}
-        </div>
+        {data.users.map(user => (
+          <p>
+            {user.displayName}, {user.area_code}
+          </p>
+        ))}
       </div>
-    );
+    </div>
+  );
 };
 
 export default HomePage;
