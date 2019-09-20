@@ -7,8 +7,8 @@ import GMap from "../../components/GMap/GMap";
 import Navbar from "../../components/Navigation/Navbar";
 import SignIn from "../SignIn/SignIn";
 import Dashboard from "../../components/Dashboard/Dashboard";
-import "./HomePage.scss"
-import LocalEvents from '../../components/LocalEvents/LocalEvents'
+import "./HomePage.scss";
+import LocalEvents from "../../components/LocalEvents/LocalEvents";
 
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
@@ -62,15 +62,9 @@ const HomePage = () => {
         mapElement={<div style={{ height: `100%` }} />}
         coords={coordinates}
       ></GMap>
-      <div></div>
-      <Dashboard />
-
-      <div>
-        {data.users.map(user => (
-          <p>
-            {user.displayName}, {user.area_code}
-          </p>
-        ))}
+      <div className="dash-container">
+        <Dashboard />
+        <LocalEvents />
       </div>
     </div>
   );
