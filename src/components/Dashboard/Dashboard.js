@@ -8,7 +8,7 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-container">
-            <h1>{userContext.userState.user.displayName}</h1>
+            <h3>{userContext.userState.user.displayName}</h3>
         </div>
     )
 }

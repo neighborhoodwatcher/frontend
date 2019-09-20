@@ -9,6 +9,7 @@ import SignIn from "../SignIn/SignIn";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import "./HomePage.scss"
 import LocalEvents from '../../components/LocalEvents/LocalEvents'
+import NewsFeed from '../../components/NewsFeed/NewsFeed';
 
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
@@ -65,6 +66,7 @@ const HomePage = () => {
         <div className="dash-container">
           <Dashboard />
           <LocalEvents />
+          <NewsFeed />
           {/* <div>
             {data.users.map(user => (
               <p>
