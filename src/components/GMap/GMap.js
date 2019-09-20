@@ -6,7 +6,6 @@ import {
   Marker,
   InfoWindow
 } from "react-google-maps";
-import places from "./places";
 
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -20,16 +19,17 @@ const GMap = withScriptjs(
       const lat = event.latLng.lat();
       const lng = event.latLng.lng();
       setClickCoord({ lat, lng });
-      // console.log(data.markers)
     };
 
     const onToggleOpen = () => {
       setIsOpen(!isOpen);
     };
 
+    // Apollo query
     const GET_MARKERS = gql`
       query getMarkers {
         markers {
+          title
           info
           latitude
           longitude
@@ -60,8 +60,9 @@ const GMap = withScriptjs(
             {isOpen && (
               <InfoWindow onCloseClick={onToggleOpen}>
                 <div>
+                  <h1>Info Window Title</h1>
                   <p>THIS IS AN INFO WINDOW!!!</p>
-                  <p>HELLO</p>
+
                   <h1>welcome</h1>
                   <h2>test</h2>
                 </div>
@@ -77,7 +78,18 @@ const GMap = withScriptjs(
                 lat: parseFloat(marker.latitude),
                 lng: parseFloat(marker.longitude)
               }}
-            ></Marker>
+              onClick={onToggleOpen}
+            >
+              {isOpen && (
+                <InfoWindow onCloseClick={onToggleOpen}>
+                  <div>
+                    <h1>{marker.title}</h1>
+                    <p>{marker.info}</p>
+                    {console.log(marker)}
+                  </div>
+                </InfoWindow>
+              )}
+            </Marker>
           ))}
       </GoogleMap>
     );
