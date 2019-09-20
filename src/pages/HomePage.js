@@ -9,7 +9,8 @@ import SignIn from "./SignIn/SignIn";
 import Dashboard from "../components/Dashboard/Dashboard";
 
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import { gql } from "apollo-boost";
+import { Query } from "react-apollo";
 
 const HomePage = () => {
   const userContext = useContext(UserContext);
@@ -22,7 +23,7 @@ const HomePage = () => {
         login(user);
         getLocationOfUser();
       }
-    })
+    });
   }, []);
 
   const getLocationOfUser = () => {
@@ -34,19 +35,20 @@ const HomePage = () => {
     });
   };
 
-  // const GET_USERS = gql`
-  //   query getUsers {
-  //     users {
-  //       displayName
-  //     }
-  //   }
-  // `;
+  const GET_USERS = gql`
+    {
+      users {
+        displayName
+        area_code
+      }
+    }
+  `;
 
-  // const { data } = useQuery(GET_USERS);
+  const { loading, error, data } = useQuery(GET_USERS);
 
   if (!isLoggedIn) {
     return <SignIn />;
-  } else
+  } else if (loading) return <div>Loading...</div>;
     return (
       <div>
         <Navbar />
@@ -58,8 +60,19 @@ const HomePage = () => {
           mapElement={<div style={{ height: `100%` }} />}
           coords={coordinates}
         ></GMap>
+        <div></div>
         <Dashboard />
-        {/* <div>{data}</div> */}
+
+        <div>
+          
+          {data.users.map(user => (
+            <p>
+              {user.displayName}, {user.area_code}
+            </p>
+          ))}
+
+          {console.log("data", data)}
+        </div>
       </div>
     );
 };

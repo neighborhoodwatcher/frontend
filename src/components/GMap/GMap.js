@@ -8,6 +8,9 @@ import {
 } from "react-google-maps";
 import places from "./places";
 
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+
 const GMap = withScriptjs(
   withGoogleMap(props => {
     const [clickCoord, setClickCoord] = useState({});
@@ -17,12 +20,26 @@ const GMap = withScriptjs(
       const lat = event.latLng.lat();
       const lng = event.latLng.lng();
       setClickCoord({ lat, lng });
+      // console.log(data.markers)
     };
 
     const onToggleOpen = () => {
       setIsOpen(!isOpen);
     };
 
+    const GET_MARKERS = gql`
+      query getMarkers {
+        markers {
+          info
+          latitude
+          longitude
+        }
+      }
+    `;
+
+    const { loading, error, data } = useQuery(GET_MARKERS);
+
+    if (loading) return <div>Loading...</div>;
     return (
       <GoogleMap
         defaultZoom={8}
@@ -34,7 +51,10 @@ const GMap = withScriptjs(
       >
         {props.isMarkerShown && (
           <Marker
-            position={{ lat: parseFloat(clickCoord.lat), lng: parseFloat(clickCoord.lng) }}
+            position={{
+              lat: parseFloat(clickCoord.lat),
+              lng: parseFloat(clickCoord.lng)
+            }}
             onClick={onToggleOpen}
           >
             {isOpen && (
@@ -49,6 +69,16 @@ const GMap = withScriptjs(
             )}
           </Marker>
         )}
+
+        {props.isMarkerShown &&
+          data.markers.map(marker => (
+            <Marker
+              position={{
+                lat: parseFloat(marker.latitude),
+                lng: parseFloat(marker.longitude)
+              }}
+            ></Marker>
+          ))}
       </GoogleMap>
     );
   })
