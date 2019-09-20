@@ -3,7 +3,7 @@ import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom'
 
 import LandingPage from './pages/LandingPage'
-import HomePage from './pages/HomePage'
+import HomePage from './pages/HomePage/HomePage'
 import Forum from './pages/Forum'
 import Settings from './pages/Settings'
 import UserContext from './context/userContext'

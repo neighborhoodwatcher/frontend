@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import firebase from "firebase";
 import "firebase/auth";
 
-import UserContext from "../context/userContext";
-import GMap from "../components/GMap/GMap";
-import Navbar from "../components/Navigation/Navbar";
-import SignIn from "./SignIn/SignIn";
-import Dashboard from "../components/Dashboard/Dashboard";
+import UserContext from "../../context/userContext";
+import GMap from "../../components/GMap/GMap";
+import Navbar from "../../components/Navigation/Navbar";
+import SignIn from "../SignIn/SignIn";
+import Dashboard from "../../components/Dashboard/Dashboard";
+import "./HomePage.scss"
+import LocalEvents from '../../components/LocalEvents/LocalEvents'
 
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
