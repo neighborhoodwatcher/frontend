@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 import {
   withScriptjs,
   withGoogleMap,
@@ -7,19 +9,10 @@ import {
   InfoWindow
 } from "react-google-maps";
 
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-
 const GMap = withScriptjs(
   withGoogleMap(props => {
     const [clickCoord, setClickCoord] = useState({});
     const [isOpen, setIsOpen] = useState(false);
-
-    const handleClick = event => {
-      const lat = event.latLng.lat();
-      const lng = event.latLng.lng();
-      setClickCoord({ lat, lng });
-    };
 
     const onToggleOpen = () => {
       setIsOpen(!isOpen);
@@ -37,12 +30,55 @@ const GMap = withScriptjs(
       }
     `;
 
+    // Apollo Mutations
+    const CREATE_MARKER = gql`
+      mutation createMarker(
+        $title: String!
+        $info: String!
+        $latitude: float8
+        $longitude: float8
+        $user_id: Int!
+      ) {
+        insert_markers(
+          objects: {
+            title: $title
+            latitude: $latitude
+            longitude: $longitude
+            info: $info
+            user_id: $user_id
+          }
+        ) {
+          affected_rows
+        }
+      }
+    `;
+
+    const handleClick = event => {
+      const lat = event.latLng.lat();
+      const lng = event.latLng.lng();
+      setClickCoord({ lat, lng });
+    };
+
+    const saveMarker = () => {
+      insert_markers({
+        variables: {
+          title: "yes",
+          info: "no",
+          latitude: parseFloat(clickCoord.lat),
+          longitude: parseFloat(clickCoord.lng),
+          user_id: 1
+        }
+      });
+    };
+
+    // Apollo hooks
     const { loading, error, data } = useQuery(GET_MARKERS);
+    const [insert_markers] = useMutation(CREATE_MARKER);
 
     if (loading) return <div>Loading...</div>;
     return (
       <GoogleMap
-        defaultZoom={8}
+        defaultZoom={10}
         defaultCenter={{
           lat: props.coords.lat,
           lng: props.coords.lng
@@ -60,18 +96,14 @@ const GMap = withScriptjs(
             {isOpen && (
               <InfoWindow onCloseClick={onToggleOpen}>
                 <div>
-                  <h1>Info Window Title</h1>
-                  <p>THIS IS AN INFO WINDOW!!!</p>
-
-                  <h1>welcome</h1>
-                  <h2>test</h2>
+                  <button onClick={saveMarker}>Save Marker?</button>
                 </div>
               </InfoWindow>
             )}
           </Marker>
         )}
 
-        {props.isMarkerShown &&
+        {/* {props.isMarkerShown &&
           data.markers.map(marker => (
             <Marker
               position={{
@@ -85,12 +117,11 @@ const GMap = withScriptjs(
                   <div>
                     <h1>{marker.title}</h1>
                     <p>{marker.info}</p>
-                    {console.log(marker)}
                   </div>
                 </InfoWindow>
               )}
             </Marker>
-          ))}
+          ))} */}
       </GoogleMap>
     );
   })

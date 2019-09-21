@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom'
 
 import LandingPage from './pages/LandingPage/LandingPage'
@@ -8,6 +7,7 @@ import Forum from './components/Forum/Forum'
 import Settings from './components/Settings/Settings'
 import UserContext from './context/userContext'
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute"
+import './App.css';
 
 function App() {
   const userContext = useContext(UserContext)
