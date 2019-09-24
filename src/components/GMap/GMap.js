@@ -9,6 +9,8 @@ import {
   InfoWindow
 } from "react-google-maps";
 
+import FormikCreateMarker from "../CreateMarker/CreateMarker"
+
 const GMap = withScriptjs(
   withGoogleMap(props => {
     const [clickCoord, setClickCoord] = useState({});
@@ -95,9 +97,10 @@ const GMap = withScriptjs(
           >
             {isOpen && (
               <InfoWindow onCloseClick={onToggleOpen}>
-                <div>
+                {/* <div>
                   <button onClick={saveMarker}>Save Marker?</button>
-                </div>
+                </div> */}
+                <FormikCreateMarker/>
               </InfoWindow>
             )}
           </Marker>
