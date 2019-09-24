@@ -6,10 +6,7 @@ import UserContext from "../../context/userContext";
 import GMap from "../../components/GMap/GMap";
 import Navbar from "../../components/Navigation/Navbar";
 import SignIn from "../SignIn/SignIn";
-import Dashboard from "../../components/Dashboard/Dashboard";
-import "./HomePage.scss";
-import LocalEvents from "../../components/LocalEvents/LocalEvents";
-import CreateEvents from '../../components/CreateEvent/CreateEvent'
+import ActivityContainer from '../../components/ActivityContainer/ActivityContainer'
 
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
@@ -18,6 +15,7 @@ const HomePage = () => {
   const userContext = useContext(UserContext);
   const { isLoggedIn, coordinates } = userContext.userState;
   const { login, setCoordinates } = userContext;
+  const [route, setRoute] = useState("homepage")
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
@@ -63,11 +61,7 @@ const HomePage = () => {
         mapElement={<div style={{ height: `100%` }} />}
         coords={coordinates}
       ></GMap>
-      <div className="dash-container">
-        <Dashboard />
-        <LocalEvents />
-        <CreateEvents />
-      </div>
+      <ActivityContainer route={route} />
     </div>
   );
 };

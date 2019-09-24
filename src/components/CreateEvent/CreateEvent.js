@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import gql from 'graphql-tag'
 import {useMutation} from '@apollo/react-hooks'
 
+import './CreateEvent.scss'
+
 const CreateEvent = () => {
     const [titleState, setTitleState] = useState('')
     const [descriptionState, setDescriptionState] = useState('')
@@ -19,7 +21,7 @@ const CreateEvent = () => {
     const [insert_events] = useMutation(CREATE_EVENT)
 
     return (
-            <div>
+            <div className="create-event-container">
                 <input onChange={e => setTitleState(e.target.value)} />
                 <input onChange={e => setDescriptionState(e.target.value)} />
                 <input onChange={e => setGenreState(e.target.value)} />

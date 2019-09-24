@@ -4,8 +4,8 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 
 import LandingPage from './pages/LandingPage/LandingPage'
 import HomePage from './pages/HomePage/HomePage'
-import Forum from './pages/Forum'
-import Settings from './pages/Settings'
+import Forum from './components/Forum/Forum'
+import Settings from './components/Settings/Settings'
 import UserContext from './context/userContext'
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute"
 
