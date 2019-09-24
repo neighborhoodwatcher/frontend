@@ -1,6 +1,33 @@
 .dashboard-container {
-    width: 20%;
+    width: 33%;
     height: 50vh;
-    background: slategrey;
-    margin: -21px 0 0 0 
+    background: white;
+    margin: -21px 0 0 0;
+    border: 2px solid black;
+}
+
+.dashboard-top {
+    display: flex;
+    margin: 28px 0 0 5px;
+}
+
+.dashboard-img {
+    width: 100px;
+    height: 100px;
+    margin: 5px 0 0 8px;
+    border-radius: 50px;
+}
+
+.dashboard-nav {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 50px;
+}
+
+.dashboard-hello {
+    margin: 10px 0 0 70px;
+}
+
+.dashboard-displayname {
+    margin: 0 0 0 15px;
 }

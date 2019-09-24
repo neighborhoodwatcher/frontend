@@ -17,7 +17,6 @@ const SignIn = () => {
     const signInWithGoogle = () => auth.signInWithPopup(provider)
     .then(result => {
         login(result.user)
-        console.log('signin', userContext)
     })
 
     return (

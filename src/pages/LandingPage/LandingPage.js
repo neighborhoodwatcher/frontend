@@ -17,8 +17,8 @@ const LandingPage = () => {
 
   const signInWithGoogle = () =>
     auth.signInWithPopup(provider).then(result => {
+      console.log(result)
       login(result.user);
-      console.log("signin", userContext);
     });
 
   return (
