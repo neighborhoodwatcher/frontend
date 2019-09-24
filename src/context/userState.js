@@ -6,7 +6,8 @@ const UserState = props => {
   const initialState = {
     user: {},
     isLoggedIn: false,
-    coordinates: { lat: 0, lng: 0 }
+    coordinates: { lat: 0, lng: 0 },
+    route: "homepage"
   };
 
   const [state, dispatch] = useReducer(UserReducer, initialState);
@@ -24,6 +25,13 @@ const UserState = props => {
     });
   };
 
+  const setRoute = route => {
+    dispatch({
+      type: "SET_ROUTE",
+      payload: route
+    })
+  }
+
   const setCoordinates = coordinates => {
     dispatch({
       type: "SET_COORDS",
@@ -37,6 +45,7 @@ const UserState = props => {
         userState: state,
         login,
         logout,
+        setRoute,
         setCoordinates
       }}
     >

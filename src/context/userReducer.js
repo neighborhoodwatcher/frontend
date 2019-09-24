@@ -12,6 +12,11 @@ export default (state, action) => {
         user: {},
         isLoggedIn: false
       };
+    case "SET_ROUTE":
+      return {
+        ...state,
+        route: action.payload
+      }
     case "SET_COORDS":
       return {
         ...state,
