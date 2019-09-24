@@ -52,7 +52,6 @@ const HomePage = () => {
   } else if (loading) return <div>Loading...</div>;
   return (
     <div>
-      <Navbar />
       <GMap
         isMarkerShown={true}
         googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMP_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 
 import UserContext from '../../context/userContext'
 import './Dashboard.scss'
+import Navbar from '../Navigation/Navbar'
 
 const Dashboard = () => {
     const userContext = useContext(UserContext)
@@ -11,8 +12,10 @@ const Dashboard = () => {
             <div className="dashboard-top">
                 <img className="dashboard-img" src={userContext.userState.user.photoURL} />
                 <div className="dashboard-nav">
-                    <h3 className="dashboard-hello">Hello,</h3>
-                    <h2 className="dashboard-displayname">{userContext.userState.user.displayName}</h2>
+                    <p className="dashboard-hello">Hello,</p>
+                    <p className="dashboard-displayname">{userContext.userState.user.displayName}</p>
+                    <hr className="horizontal-line" />
+                    <Navbar />
                 </div>
             </div>
         </div>
