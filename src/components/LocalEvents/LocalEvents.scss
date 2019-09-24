@@ -1,6 +1,6 @@
 .local-events {
     margin: -20px 0 0 5px;
-    width: 50%;
+    width: 66%;
     height: 57vh;
     overflow: scroll;
 }
@@ -14,4 +14,21 @@
 
 .event-description {
     margin-left: 20px
+}
+
+.events-message {
+    margin: 22px 0 0 5px
+}
+
+.events-city-name {
+    margin: -8px 0 0 0
+}
+
+.events-upcoming-title {
+    margin: 10px 0 0 140px;
+}
+
+.line {
+    width: 30%;
+    margin-left: 85px;
 }

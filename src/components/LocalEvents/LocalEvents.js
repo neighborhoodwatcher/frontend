@@ -21,7 +21,10 @@ const LocalEvents = () => {
     return (
 
         <div className="local-events">
-            <h2>Local Events Near You:</h2>
+            <h3 className="events-message">
+              WHAT'S HAPPENING NEAR <br/><h2 className="events-city-name">LOS ANGELES?</h2>
+            </h3>
+            <h3 className="events-upcoming-title">UPCOMING EVENTS</h3><hr className="line" />
             {loading ? <h1>Loading...</h1> : data.events.map(event => (
                 <div>
                     <div className="events-title">

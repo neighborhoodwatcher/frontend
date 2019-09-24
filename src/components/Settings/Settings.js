@@ -1,9 +1,10 @@
 import React from 'react'
+import "./Settings.scss"
 
 const Settings = () => {
     return (
         <div className="activity-container">
-            Settings
+            <h3 className="settings-title">Settings</h3>
         </div>
     )
 }
