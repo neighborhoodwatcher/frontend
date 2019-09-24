@@ -1,27 +1,54 @@
-.landing-title {
-    margin: 0 0 0 0
+.landing {
+  font-family: "Staatliches", cursive;
 }
 
-.landing-motto {
-    margin: 250px 0 0 450px;
+.landing__logo {
+  display: flex;
+  margin: 1rem 0 0 2rem;
 }
 
-.button-container {
-    display: flex;
-    justify-content: center;
-
-    :hover {
-        cursor: pointer;
-    }
+.landing__logo--text {
+  font-size: 2.5rem;
 }
 
-.landing-button {
-    width: 150px;
-    margin: 15px 0 0 0;
-    height: 28px;
-    background: black;
-    color: white;
-    border-radius: 20px;
-    border: none;
-    font-size: 16px;
+.landing__logo--image {
+  max-width: 100%;
+  height: 42px;
+}
+
+.landing__motto {
+  display: flex;
+  justify-content: center;
+  padding: 10% 0 0 0;
+  //   margin: 10rem 0 3rem 10rem;
+}
+.landing__motto--smallText {
+  font-size: 3.5rem;
+}
+.landing__motto--largeText {
+  font-size: 7rem;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+
+  :hover {
+    cursor: pointer;
+  }
+}
+
+.button__landing {
+  width: 150px;
+  margin: 1rem 0 0 0;
+  height: 28px;
+  background: black;
+
+  border-radius: 10px;
+  border: 1px solid black;
+
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  text-transform: uppercase;
 }
