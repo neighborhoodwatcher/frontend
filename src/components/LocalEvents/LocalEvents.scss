@@ -1,34 +1,29 @@
-.local-events {
-    margin: -20px 0 0 5px;
+.local-events-container {
     width: 66%;
-    height: 57vh;
-    overflow: scroll;
-}
-
-.events-title {
     display: flex;
-    justify-content: space-evenly;
-    text-decoration: underline;
-    background: lightblue
+    overflow: auto;
 }
 
-.event-description {
-    margin-left: 20px
+.local-left-container {
+    width: 52%;
 }
 
-.events-message {
-    margin: 22px 0 0 5px
+.local-events {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 0;
+    border: 1px solid red
 }
 
-.events-city-name {
-    margin: -8px 0 0 0
-}
-
-.events-upcoming-title {
-    margin: 10px 0 0 140px;
-}
-
-.line {
-    width: 30%;
-    margin-left: 85px;
-}
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #FFFFFF; 
+    border-radius: 25px;
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: #000000; 
+  }
