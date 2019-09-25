@@ -8,49 +8,19 @@ const Navbar = () => {
   const { logout, setRoute } = userContext;
 
   return (
-    <div className="nav-container">
-      <div className="nav-items-container">
-        <Link
-          style={{
-            textDecoration: "none",
-            marginRight: "20px",
-            color: "black"
-          }}
-          onClick={() => setRoute("homepage")}
-        >
-          Home
-        </Link>
-        <Link
-          style={{
-            textDecoration: "none",
-            marginRight: "20px",
-            color: "black"
-          }}
-          onClick={() => setRoute("forum")}
-        >
-          Forum
-        </Link>
-        <Link
-          style={{
-            textDecoration: "none",
-            marginRight: "20px",
-            color: "black"
-          }}
-          onClick={() => setRoute("settings")}
-        >
-          Settings
-        </Link>
-        <Link
-          style={{
-            textDecoration: "none",
-            marginRight: "20px",
-            color: "black"
-          }}
-          onClick={logout}
-        >
-          Sign Out
-        </Link>
-      </div>
+    <div className="nav">
+      <Link className="nav__item" onClick={() => setRoute("homepage")}>
+        Home
+      </Link>
+      <Link className="nav__item" onClick={() => setRoute("forum")}>
+        Forum
+      </Link>
+      <Link className="nav__item" onClick={() => setRoute("settings")}>
+        Settings
+      </Link>
+      <Link className="nav__item" onClick={logout}>
+        Sign Out
+      </Link>
     </div>
   );
 };
