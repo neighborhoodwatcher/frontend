@@ -4,7 +4,6 @@ import "firebase/auth";
 
 import UserContext from "../../context/userContext";
 import GMap from "../../components/GMap/GMap";
-import Navbar from "../../components/Navigation/Navbar";
 import SignIn from "../SignIn/SignIn";
 import ActivityContainer from '../../components/ActivityContainer/ActivityContainer'
 
@@ -14,26 +13,15 @@ import { gql } from "apollo-boost";
 const HomePage = () => {
   const userContext = useContext(UserContext);
   const { isLoggedIn, coordinates } = userContext.userState;
-  const { login, setCoordinates } = userContext;
-  const [route, setRoute] = useState("homepage")
+  const { login } = userContext;
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         login(user);
-        getLocationOfUser();
       }
     });
   }, []);
-
-  const getLocationOfUser = () => {
-    navigator.geolocation.getCurrentPosition(position => {
-      setCoordinates({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      });
-    });
-  };
 
   // Apollo query
   const GET_USERS = gql`
@@ -60,7 +48,7 @@ const HomePage = () => {
         mapElement={<div style={{ height: `100%` }} />}
         coords={coordinates}
       ></GMap>
-      <ActivityContainer route={route} />
+      <ActivityContainer />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import firebase from "../../firebase/firebaseUtils";
 import UserContext from "../../context/userContext";
@@ -9,7 +9,7 @@ import CityWatchLogo from "../../assets/icons8-city-100.png";
 const LandingPage = () => {
   const userContext = useContext(UserContext);
 
-  const { login } = userContext;
+  const { login, setCoordinates } = userContext;
 
   const auth = firebase.auth();
 
@@ -21,6 +21,19 @@ const LandingPage = () => {
       console.log(result);
       login(result.user);
     });
+
+  const getLocationOfUser = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      setCoordinates({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      });
+    });
+  };
+
+  useEffect(() => {
+    getLocationOfUser();
+  }, []);
 
   return (
     <div className="landing">
