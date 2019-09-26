@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Field, Formik } from "formik";
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
+import "./CreateMarker.scss";
 
 const CreateMarker = props => {
   const CREATE_MARKER = gql`
@@ -46,21 +47,33 @@ const CreateMarker = props => {
             });
           }}
           render={props => (
-            <Form>
+            <Form className="form">
+              <span className="form__header">Create Marker</span>
+              <label htmlFor="title" className="form__label">
+                Title
+              </label>
               <Field
                 type="text"
                 onChange={props.handleChange}
                 value={props.values.title}
                 name="title"
-                placeholder="Title"
+                className="form__field"
+                id="title"
               />
+              <label htmlFor="info" className="form__label">
+                Info
+              </label>
               <Field
                 type="text"
                 value={props.values.info}
                 name="info"
-                placeholder="Info"
+                component="textarea"
+                className="form__field"
+                id="info"
               />
-              <button type="submit"> Save Marker </button>
+              <button type="submit" className="form__button">
+                Save Marker
+              </button>
             </Form>
           )}
         />

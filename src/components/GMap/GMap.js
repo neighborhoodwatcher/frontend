@@ -9,7 +9,7 @@ import {
   InfoWindow
 } from "react-google-maps";
 
-import FormikCreateMarker from "../CreateMarker/CreateMarker";
+import CreateMarker from "../CreateMarker/CreateMarker";
 
 const GMap = withScriptjs(
   withGoogleMap(props => {
@@ -61,7 +61,7 @@ const GMap = withScriptjs(
           >
             {isOpen && (
               <InfoWindow onCloseClick={onToggleOpen}>
-                <FormikCreateMarker
+                <CreateMarker
                   latitude={clickCoord.lat}
                   longitude={clickCoord.lng}
                 />
