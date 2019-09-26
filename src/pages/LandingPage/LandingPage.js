@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import {useMutation} from '@apollo/react-hooks'
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 
 import firebase from "../../firebase/firebaseUtils";
 import UserContext from "../../context/userContext";
@@ -7,13 +9,21 @@ import "firebase/auth";
 import "./LandingPage.scss";
 import CityWatchLogo from "../../assets/icons8-city-100.png";
 import { CREATE_USER } from '../../utils/GraphQL'
-import { create } from "domain";
 
 const LandingPage = () => {
   const userContext = useContext(UserContext);
   const { login, setCoordinates } = userContext;
 
   const [insert_users] = useMutation(CREATE_USER)
+
+  const GET_USERS = gql`
+    {
+      users(where: {uid: {_like: "h3n0neUaj1b1Rtxgl4eAi1Hu8Fv2"}}) {
+        displayName
+      }
+  }`
+
+  const { loading, error, data } = useQuery(GET_USERS);
 
   const auth = firebase.auth();
 
@@ -24,7 +34,12 @@ const LandingPage = () => {
     auth.signInWithPopup(provider).then(result => {
       console.log(result);
       login(result.user);
-      insert_users({variables: {uid: result.user.uid, displayName: result.user.displayName, email: result.user.displayName, latitude: 11.000, longitude: 12.000,}})
+      console.log('data.user', data.users)
+      if(data.users.length === 0) {
+        insert_users({variables: {uid: result.user.uid, displayName: result.user.displayName, email: result.user.displayName, latitude: 11.000, longitude: 12.000,}})
+      } else if (data.users.length > 0) {
+        return
+      }
     });
 
   const getLocationOfUser = () => {

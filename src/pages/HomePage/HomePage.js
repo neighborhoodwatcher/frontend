@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import firebase from "firebase";
 import "firebase/auth";
 import { useQuery } from "@apollo/react-hooks";

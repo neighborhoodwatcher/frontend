@@ -17,8 +17,7 @@ const LocalEvents = () => {
         description
         genre
       }
-    }
-  `;
+    }`;
 
     const { loading, error, data } = useQuery(GET_EVENTS);
 
