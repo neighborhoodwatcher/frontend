@@ -11,7 +11,6 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute"
 
 function App() {
   const userContext = useContext(UserContext)
-  
   const {isLoggedIn} = userContext.userState 
 
   return (

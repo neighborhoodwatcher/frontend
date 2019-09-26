@@ -1,18 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import firebase from "firebase";
 import "firebase/auth";
-
-import UserContext from "../../context/userContext";
-import GMap from "../../components/GMap/GMap";
-import SignIn from "../SignIn/SignIn";
-import ActivityContainer from '../../components/ActivityContainer/ActivityContainer'
-
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
+import UserContext from "../../context/userContext";
+import GMap from "../../components/GMap/GMap";
+import ActivityContainer from '../../components/ActivityContainer/ActivityContainer'
+
 const HomePage = () => {
   const userContext = useContext(UserContext);
-  const { isLoggedIn, coordinates } = userContext.userState;
+  const { coordinates } = userContext.userState;
   const { login } = userContext;
 
   useEffect(() => {
@@ -35,9 +33,7 @@ const HomePage = () => {
 
   const { loading, error, data } = useQuery(GET_USERS);
 
-  if (!isLoggedIn) {
-    return <SignIn />;
-  } else if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
   return (
     <div>
       <GMap
