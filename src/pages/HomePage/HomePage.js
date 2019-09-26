@@ -3,15 +3,44 @@ import firebase from "firebase";
 import "firebase/auth";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import {useMutation} from '@apollo/react-hooks'
 
 import UserContext from "../../context/userContext";
 import GMap from "../../components/GMap/GMap";
 import ActivityContainer from '../../components/ActivityContainer/ActivityContainer'
+import { CREATE_USER } from '../../utils/GraphQL'
 
 const HomePage = () => {
   const userContext = useContext(UserContext);
   const { coordinates } = userContext.userState;
   const { login } = userContext;
+  const user = userContext.userState.user
+  const userUID = userContext.userState.user.uid
+  const userLat = userContext.userState.coordinates.lat
+  const userLon = userContext.userState.coordinates.lng
+
+  const [insert_users] = useMutation(CREATE_USER)
+  
+  // Apollo query
+  const GET_USERS = gql`
+    query getUsers($user_uid: String!) {
+      users(where: {uid: {_ilike: $user_uid}}) {
+        displayName
+      }
+  }`
+
+  const { loading, error, data } = useQuery(GET_USERS, {
+    variables: {user_uid: userUID}
+  });
+  console.log('data', data)
+
+  const createUserInDB = (data, insert_users) => {
+    if(data && data.users.length === 0) {
+      insert_users({variables: {uid: user.uid, displayName: user.displayName, email: user.email, latitude: userLat, longitude: userLon,}})
+    } else if (data && data.users.length > 0) {
+      return
+    }
+  }
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
@@ -19,21 +48,9 @@ const HomePage = () => {
         login(user);
       }
     });
+    createUserInDB(data, insert_users);
   }, []);
 
-  // Apollo query
-  const GET_USERS = gql`
-    {
-      users {
-        displayName
-        area_code
-      }
-    }
-  `;
-
-  const { loading, error, data } = useQuery(GET_USERS);
-
-  if (loading) return <div>Loading...</div>;
   return (
     <div>
       <GMap
