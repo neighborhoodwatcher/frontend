@@ -31,9 +31,9 @@ const CreateEvent = () => {
     
     return (
             <div className="create-event-container">
-                <input onChange={e => setTitleState(e.target.value)} />
-                <input onChange={e => setDescriptionState(e.target.value)} />
-                <input onChange={e => setGenreState(e.target.value)} />
+                <input onChange={e => setTitleState(e.target.value)} value={titleState} />
+                <input onChange={e => setDescriptionState(e.target.value)} value={descriptionState} />
+                <input onChange={e => setGenreState(e.target.value)} value={genreState} />
                 <button onClick={() => createEvent(insert_events, titleState, descriptionState, genreState, uid)}>Create Event
                 </button>
             </div>
