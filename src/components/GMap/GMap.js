@@ -9,7 +9,7 @@ import {
   InfoWindow
 } from "react-google-maps";
 
-import FormikCreateMarker from "../CreateMarker/CreateMarker"
+import FormikCreateMarker from "../CreateMarker/CreateMarker";
 
 const GMap = withScriptjs(
   withGoogleMap(props => {
@@ -32,50 +32,14 @@ const GMap = withScriptjs(
       }
     `;
 
-    // Apollo Mutations
-    const CREATE_MARKER = gql`
-      mutation createMarker(
-        $title: String!
-        $info: String!
-        $latitude: float8
-        $longitude: float8
-        $user_id: Int!
-      ) {
-        insert_markers(
-          objects: {
-            title: $title
-            latitude: $latitude
-            longitude: $longitude
-            info: $info
-            user_id: $user_id
-          }
-        ) {
-          affected_rows
-        }
-      }
-    `;
-
     const handleClick = event => {
       const lat = event.latLng.lat();
       const lng = event.latLng.lng();
       setClickCoord({ lat, lng });
     };
 
-    const saveMarker = () => {
-      insert_markers({
-        variables: {
-          title: "yes",
-          info: "no",
-          latitude: parseFloat(clickCoord.lat),
-          longitude: parseFloat(clickCoord.lng),
-          user_id: 1
-        }
-      });
-    };
-
     // Apollo hooks
     const { loading, error, data } = useQuery(GET_MARKERS);
-    const [insert_markers] = useMutation(CREATE_MARKER);
 
     if (loading) return <div>Loading...</div>;
     return (
@@ -97,10 +61,10 @@ const GMap = withScriptjs(
           >
             {isOpen && (
               <InfoWindow onCloseClick={onToggleOpen}>
-                {/* <div>
-                  <button onClick={saveMarker}>Save Marker?</button>
-                </div> */}
-                <FormikCreateMarker/>
+                <FormikCreateMarker
+                  latitude={clickCoord.lat}
+                  longitude={clickCoord.lng}
+                />
               </InfoWindow>
             )}
           </Marker>
