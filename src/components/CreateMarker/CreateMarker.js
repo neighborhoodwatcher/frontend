@@ -49,6 +49,7 @@ const CreateMarker = props => {
           render={props => (
             <Form className="form">
               <span className="form__header">Create Marker</span>
+              <hr className="form__line" />
               <label htmlFor="title" className="form__label">
                 Title
               </label>

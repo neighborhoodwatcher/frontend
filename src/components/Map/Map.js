@@ -24,7 +24,8 @@ const Map = withScriptjs(
     // Apollo hooks
     const { loading, error, data } = useQuery(GET_MARKERS);
 
-    const handleClick = event => {
+    // Grabs coords from mouseclick
+    const handleMapClick = event => {
       const lat = event.latLng.lat();
       const lng = event.latLng.lng();
       setClickCoord({ lat, lng });
@@ -38,31 +39,26 @@ const Map = withScriptjs(
           lat: props.coords.lat,
           lng: props.coords.lng
         }}
-        onClick={event => handleClick(event)}
+        onClick={event => handleMapClick(event)}
       >
         {props.isMarkerShown && (
+          // For placing new markers
           <MapMarker
             latitude={parseFloat(clickCoord.lat)}
             longitude={parseFloat(clickCoord.lng)}
-          ></MapMarker>
+          />
         )}
 
         {props.isMarkerShown &&
+          // For populating map with markers from DB
           data.markers.map(marker => (
             <MapMarker
               key={marker.id}
               latitude={parseFloat(marker.latitude)}
               longitude={parseFloat(marker.longitude)}
-            >
-              {/* {isOpen && (
-                <InfoWindow onCloseClick={onToggleOpen}>
-                  <div>
-                    <h1>{marker.title}</h1>
-                    <p>{marker.info}</p>
-                  </div>
-                </InfoWindow>
-              )} */}
-            </MapMarker>
+              title={marker.title}
+              info={marker.info}
+            />
           ))}
       </GoogleMap>
     );
