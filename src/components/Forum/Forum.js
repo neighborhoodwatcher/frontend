@@ -16,7 +16,7 @@ const Forum = () => {
             </div>
             <div className="forum-right-container">
                 <div className="forum-right-contents">
-                    <button className="forum-button">Create a Post</button>
+                    <button className="forum-button" onClick={() => setRoute("createPost")}>Create a Post</button>
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ import CreateEvent from '../CreateEvent/CreateEvent'
 import UserContext from "../../context/userContext";
 import Forum from '../Forum/Forum'
 import Settings from '../Settings/Settings'
+import CreatePost from '../CreatePost/CreatePost'
 
 const ActivityContainer = () => {
     const userContext = useContext(UserContext);
@@ -23,6 +24,8 @@ const ActivityContainer = () => {
             <CreateEvent />) : ""}
             {route === "forum" ? (
             <Forum />) : ""}
+            {route === "createPost" ? (
+            <CreatePost />) : ""}
             {route === "settings" ? (
             <Settings/>) : ""}
         </div>
