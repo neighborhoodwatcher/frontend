@@ -1,4 +1,43 @@
-.forum-title {
-    margin: 5px 0 0 15px;
-    font-size: 35px
+.forum-container {
+    width: 66%;
+    display: flex;
+}
+
+.forum-left-container {
+    width: 65%;
+    border: 1px solid red;
+}
+
+.forum-right-container {
+    width: 35%
+}
+
+.forum-left-contents {
+    display: flex;
+    flex-direction: column
+}
+
+.forum-right-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button {
+    :hover {
+        cursor: pointer;
+      }
+}
+
+.forum-button {
+    margin: 15px 0 0 0;
+    height: 28px;
+    width: 50%;
+    background: black;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    text-transform: uppercase;
 }
