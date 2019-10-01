@@ -1,11 +1,14 @@
 .forum__container {
   width: 66%;
 }
-
 .forum__container--top {
   // width: 66%;
-  //   display: flex;
+  // display: flex;
   overflow: auto;
+}
+.forum__container--bottom {
+  display: flex;
+  //   justify-content: space-between;
 }
 
 .forum__header {
@@ -40,10 +43,6 @@
 .forum__header--button:hover {
   cursor: pointer;
 }
-.forum__container--bottom {
-  display: flex;
-  //   justify-content: space-between;
-}
 
 .forum__overview {
   width: 65%;
@@ -51,7 +50,6 @@
   display: flex;
   flex-wrap: wrap;
 }
-
 .forum__overview--topic {
   display: flex;
   flex-direction: column;

@@ -1,38 +1,98 @@
-.post-container {
-    width: 66%
+.createPost__container {
+  width: 66%;
+  overflow: auto;
+}
+.createPost__container--top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.createPost__container--bottom {
+  display: flex;
+  //   margin: 35px 0 0 0;
 }
 
-.post-header {
-    margin : 5px 0 0 10px
+.createPost__header {
+  margin: 20px 0 0 0;
+
+  font-family: "Staatliches", cursive;
+}
+.createPost__header--forum {
+  margin: 0px 0 0 20px;
+
+  font-size: 5rem;
+}
+.createPost__header--create {
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin: 0 0 20px 30px;
+
+  // align-self: flex-end;
+}
+.createPost__header--button {
+  margin: 0 40px 0 0;
+  height: 28px;
+  width: 20%;
+  background: black;
+
+  border-radius: 10px;
+  border: 1px solid black;
+
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  text-transform: uppercase;
 }
 
-.post-body-container {
-    display: flex;
-    margin: 35px 0 0 0;
+.createPost__form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 0 0 0 20px;
+
+  font-family: "Staatliches", cursive;
+  //   align-items: flex-start;
+  //   width: 70%;
+}
+.createPost__form--field {
+  font-size: 1.7rem;
+  margin: 10px auto 0;
 }
 
-.post-left-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 70%;
+// .post-right-container {
+//   width: 30%;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+.createPost__form--dropdown {
+  width: 50%;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 40px;
+  padding: 0 0 0 5px;
 }
 
-.post-right-container {
-    width: 30%;
-    display: flex;
-    flex-direction: column
+.createPost__form--input {
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 40px;
+  width: 500px;
+  padding: 0 0 0 10px;
 }
 
-.post-title {
-    width: 500px
+.createPost__form--textarea {
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 150px;
+  width: 500px;
+  padding: 10px 0 0 10px;
 }
 
-.post-body {
-    width: 500px;
-    height: 150px
-}
-
-.post-select {
-    width: 50%
+div > select > option,
+div > select,
+div > input,
+div > textarea {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
 }

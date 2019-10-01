@@ -11,9 +11,9 @@ const Forum = () => {
     <div className="forum__container">
       <div className="forum__container--top">
         <div className="forum__header">
-          <div>
+          {/* <div> */}
             <span className="forum__header--title">Forums</span>
-          </div>
+          {/* </div> */}
           <button
             className="forum__header--button"
             onClick={() => setRoute("createPost")}
@@ -62,6 +62,7 @@ const Forum = () => {
             <div className="forum__overview--post">another post</div>
           </div>
         </div>
+        
         <div className="forum__topicList">
           <h3 className="forum__topicList--header">Topic List</h3>
           <hr className="forum__topicList--line" />
