@@ -1,43 +1,99 @@
-.forum-container {
-    width: 66%;
-    display: flex;
+.forum__container {
+  width: 66%;
 }
 
-.forum-left-container {
-    width: 65%;
-    border: 1px solid red;
+.forum__container--top {
+  // width: 66%;
+  //   display: flex;
+  overflow: auto;
 }
 
-.forum-right-container {
-    width: 35%
+.forum__header {
+  //   width: 100%;
+  display: flex;
+  //   flex-grow: 100;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 0 0;
+
+  font-family: "Staatliches", cursive;
+}
+.forum__header--title {
+  margin: 0px 0 0 20px;
+
+  font-size: 5rem;
+}
+.forum__header--button {
+  margin: 0 40px 0 0;
+  height: 28px;
+  width: 20%;
+  background: black;
+
+  border-radius: 10px;
+  border: 1px solid black;
+
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  text-transform: uppercase;
+}
+.forum__header--button:hover {
+  cursor: pointer;
+}
+.forum__container--bottom {
+  display: flex;
+  //   justify-content: space-between;
 }
 
-.forum-left-contents {
-    display: flex;
-    flex-direction: column
+.forum__overview {
+  width: 65%;
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.forum-right-contents {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.forum__overview--topic {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.forum__overview--header {
+  font-family: "Staatliches", cursive;
+  font-weight: 500;
+  font-size: 1.7rem;
+  text-align: center;
+
+  margin-bottom: 0px;
+}
+.forum__overview--line {
+  border: 1px solid black;
+  width: 85%;
+}
+.forum__overview--post {
+  border: 1px solid blue;
 }
 
-.button {
-    :hover {
-        cursor: pointer;
-      }
-}
+.forum__topicList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
 
-.forum-button {
-    margin: 15px 0 0 0;
-    height: 28px;
-    width: 50%;
-    background: black;
-    border-radius: 10px;
-    border: 1px solid black;
-    font-size: 16px;
-    font-family: "Roboto", sans-serif;
-    color: white;
-    text-transform: uppercase;
+  font-family: "Staatliches", cursive;
+}
+.forum__topicList--header {
+  font-weight: 500;
+  font-size: 1.7rem;
+  //   text-align: center;
+
+  margin-bottom: 0px;
+}
+.forum__topicList--line {
+  border: 1px solid black;
+  width: 60%;
+}
+.forum__topicList--topic > h3 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0 0 0 0;
 }
