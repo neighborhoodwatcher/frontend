@@ -43,6 +43,9 @@
   color: white;
   text-transform: uppercase;
 }
+.createPost__header--button:hover {
+  cursor: pointer;
+}
 
 .createPost__form {
   display: flex;
