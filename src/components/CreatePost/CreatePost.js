@@ -10,6 +10,7 @@ const CreatePost = () => {
   const [bodyState, setBodyState] = useState("");
   const [topicState, setTopicState] = useState("");
   const userContext = useContext(UserContext);
+  const { setRoute } = userContext;
 
   const CREATE_POST = gql`
     mutation createPost(
@@ -50,6 +51,8 @@ const CreatePost = () => {
     setTitleState("");
     setBodyState("");
     setTopicState("");
+
+    setRoute("forum");
   };
 
   return (
@@ -74,8 +77,9 @@ const CreatePost = () => {
           <div>
             <p className="createPost__form--field">Topic</p>
             <select
-              onClick={e => setTopicState(e.target.value)}
+              onChange={e => setTopicState(e.target.value)}
               className="createPost__form--dropdown"
+              value={topicState}
             >
               <option>Pick One</option>
               <option value="Fitness">Fitness</option>
