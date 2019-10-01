@@ -15,7 +15,7 @@ const LocalEvents = () => {
       events {
         title
         description
-        genre
+        topic
       }
     }
   `;
@@ -47,7 +47,7 @@ const LocalEvents = () => {
             data.events.map(event => (
               <div className="events-container">
                 <p>{event.title}</p>
-                <p>{event.genre}</p>
+                <p>{event.topic}</p>
                 <p>{event.description}</p>
               </div>
             ))
