@@ -82,10 +82,12 @@ const CreatePost = () => {
               value={topicState}
             >
               <option>Pick One</option>
-              <option value="Fitness">Fitness</option>
-              <option value="Recreational">Recreational</option>
-              <option value="Sport">Sport</option>
+              <option value="General">General</option>
               <option value="Music">Music</option>
+              <option value="Recreational">Recreational</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Tech">Tech</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div>

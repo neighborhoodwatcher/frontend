@@ -1,10 +1,11 @@
 .forum__container {
   width: 66%;
+  overflow: auto;
 }
 .forum__container--top {
   // width: 66%;
   // display: flex;
-  overflow: auto;
+  //overflow: auto;
 }
 .forum__container--bottom {
   display: flex;
