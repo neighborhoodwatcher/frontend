@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import UserContext from "../../context/userContext";
 import Navbar from "../Navigation/Navbar";
 import "./Dashboard.scss";
+import MyEvents from '../MyEvents/MyEvents'
+import MyMarkers from '../MyMarkers/MyMarkers'
 
 const Dashboard = () => {
   const userContext = useContext(UserContext);
@@ -25,6 +27,11 @@ const Dashboard = () => {
 
           <Navbar />
         </div>
+      </div>
+
+      <div className="dashboard__bottom">
+        <MyEvents />
+        <MyMarkers />
       </div>
     </div>
   );

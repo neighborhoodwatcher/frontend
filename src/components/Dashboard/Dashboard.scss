@@ -9,7 +9,7 @@
 .dashboard__top {
   display: flex;
   justify-content: center;
-  margin: 2.5rem auto 0;
+  margin: 2rem auto 0;
 }
 .dashboard__top--userImg {
   max-width: 125px;
@@ -19,6 +19,7 @@
 }
 
 .dashboard__user {
+  margin-top: -15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,4 +38,9 @@
 .dashboard__user--line {
   border: 1px solid black;
   width: 90%;
+}
+.dashboard__bottom {
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: space-around;
 }
