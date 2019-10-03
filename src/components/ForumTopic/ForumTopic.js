@@ -13,7 +13,14 @@ const ForumTopic = ({ topic }) => {
     <div className="forumTopic__container">
       <div className="forumTopic__container--top">
         <div className="forumTopic__header">
-          <span className="forumTopic__header--forum">Forums</span>
+          <span
+            className="forumTopic__header--forum"
+            onClick={() => {
+              setRoute("forum");
+            }}
+          >
+            Forums
+          </span>
           <span className="forumTopic__header--topic">#{topic}</span>
         </div>
         <button

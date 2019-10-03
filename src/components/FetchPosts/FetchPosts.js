@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
+import UserContext from "../../context/userContext";
 import "./FetchPosts.scss";
 
 const FetchPosts = ({ topic, size }) => {
+  const userContext = useContext(UserContext);
+  const { setRoute, setTopic } = userContext;
+
   const GET_POSTS = gql`
     query getPosts($topic: String!) {
       posts(where: { topic: { _ilike: $topic } }) {
@@ -26,7 +30,15 @@ const FetchPosts = ({ topic, size }) => {
   if (size === "small") {
     return (
       <div className="posts__small">
-        <span className="posts__small--topic">#{topic}</span>
+        <span
+          className="posts__small--topic"
+          onClick={() => {
+            setRoute("forumTopic");
+            setTopic(topic);
+          }}
+        >
+          #{topic}
+        </span>
         <hr className="posts__small--line" />
 
         {loading ? (

@@ -14,7 +14,6 @@
   // margin: 20px 0 0 0;
 }
 
-
 .forumTopic__header {
   margin: 20px 0 0 0;
 
@@ -24,6 +23,9 @@
   margin: 0px 0 0 20px;
 
   font-size: 5rem;
+}
+.forumTopic__header--forum:hover {
+  cursor: pointer;
 }
 .forumTopic__header--topic {
   font-size: 1.7rem;
@@ -44,4 +46,3 @@
   color: white;
   text-transform: uppercase;
 }
-
