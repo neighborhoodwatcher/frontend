@@ -51,26 +51,26 @@
   display: flex;
   flex-wrap: wrap;
 }
-.forum__overview--topic {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-}
-.forum__overview--header {
-  font-family: "Staatliches", cursive;
-  font-weight: 500;
-  font-size: 1.7rem;
-  text-align: center;
+// .forum__overview--topic {
+//   display: flex;
+//   flex-direction: column;
+//   margin: 0 auto;
+// }
+// .forum__overview--header {
+//   font-family: "Staatliches", cursive;
+//   font-weight: 500;
+//   font-size: 1.7rem;
+//   text-align: center;
 
-  margin-bottom: 0px;
-}
-.forum__overview--line {
-  border: 1px solid black;
-  width: 85%;
-}
-.forum__overview--post {
-  border: 1px solid blue;
-}
+//   margin-bottom: 0px;
+// }
+// .forum__overview--line {
+//   border: 1px solid black;
+//   width: 85%;
+// }
+// .forum__overview--post {
+//   border: 1px solid blue;
+// }
 
 .forum__topicList {
   display: flex;

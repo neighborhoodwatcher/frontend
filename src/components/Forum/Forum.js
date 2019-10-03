@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 
 import UserContext from "../../context/userContext";
-import "./Forum.scss";
 import FetchPosts from "../FetchPosts/FetchPosts";
+import "./Forum.scss";
 
 const Forum = () => {
   const userContext = useContext(UserContext);
@@ -12,9 +12,7 @@ const Forum = () => {
     <div className="forum__container">
       <div className="forum__container--top">
         <div className="forum__header">
-          {/* <div> */}
-            <span className="forum__header--title">Forums</span>
-          {/* </div> */}
+          <span className="forum__header--title">Forums</span>
           <button
             className="forum__header--button"
             onClick={() => setRoute("createPost")}
@@ -26,14 +24,14 @@ const Forum = () => {
 
       <div className="forum__container--bottom">
         <div className="forum__overview">
-          <FetchPosts topic={"general"}/>
+          <FetchPosts topic={"general"} />
           <FetchPosts topic={"music"}/>
           <FetchPosts topic={"recreational"}/>
           <FetchPosts topic={"fitness"}/>
           <FetchPosts topic={"tech"}/>
           <FetchPosts topic={"other"}/>
         </div>
-        
+
         <div className="forum__topicList">
           <h3 className="forum__topicList--header">Topic List</h3>
           <hr className="forum__topicList--line" />

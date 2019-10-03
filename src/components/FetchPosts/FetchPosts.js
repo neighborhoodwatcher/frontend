@@ -1,42 +1,44 @@
-import React from 'react'
-
+import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
+import "./FetchPosts.scss";
+
 const FetchPosts = ({ topic }) => {
-    const GET_POSTS = gql`
-    query getPosts($topic: String!){
-        posts(where: {topic: {_ilike: $topic}}, limit: 3) {
-            title
-            body
-            topic
+  const GET_POSTS = gql`
+    query getPosts($topic: String!) {
+      posts(where: { topic: { _ilike: $topic } }, limit: 3) {
+        title
+        body
+        topic
+        user {
+          displayName
         }
-    }`;
+      }
+    }
+  `;
 
-    const { loading, error, data } = useQuery(GET_POSTS, {
-        variables: {topic}
-    });
+  const { loading, error, data } = useQuery(GET_POSTS, {
+    variables: { topic }
+  });
 
-    return (
-        <div>
-            <h3 className="forum__overview--header">{topic}</h3>
-            {loading ? (<h2>Loading...</h2>) : (
-                data.posts.map(post => (
-                    <div className="forum__overview--topic">
-                        <hr className="forum__overview--line" />
-                        <div className="forum__overview--post">
-                            <div>
-                                {post.title}
-                            </div>
-                            <div>
-                                {post.body}
-                            </div>
-                        </div>
-                    </div>
-                ))
-            )}
-        </div>
-    )
-}
+  return (
+    <div className="posts__small">
+      <span className="posts__small--topic">{topic}</span>
+      <hr className="posts__small--line" />
 
-export default FetchPosts
+      {loading ? (
+        <h2>Loading...</h2>
+      ) : (
+        data.posts.map(post => (
+          <div className="posts__small--container">
+            <div className="posts__small--title">{post.title}</div>
+            <div className="posts__small--user">{post.user.displayName}</div>
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
+
+export default FetchPosts;
