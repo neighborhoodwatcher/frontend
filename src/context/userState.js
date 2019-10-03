@@ -46,6 +46,13 @@ const UserState = props => {
     });
   };
 
+  const setPostID = postID => {
+    dispatch({
+      type: "SET_POSTID",
+      payload: postID
+    });
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -54,7 +61,8 @@ const UserState = props => {
         logout,
         setRoute,
         setCoordinates,
-        setTopic
+        setTopic,
+        setPostID
       }}
     >
       {props.children}
