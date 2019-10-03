@@ -16,11 +16,16 @@ export default (state, action) => {
       return {
         ...state,
         route: action.payload
-      }
+      };
     case "SET_COORDS":
       return {
         ...state,
         coordinates: action.payload
+      };
+    case "SET_TOPIC":
+      return {
+        ...state,
+        topic: action.payload
       };
     default:
       return state;

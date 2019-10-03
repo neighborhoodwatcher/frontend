@@ -29,13 +29,20 @@ const UserState = props => {
     dispatch({
       type: "SET_ROUTE",
       payload: route
-    })
-  }
+    });
+  };
 
   const setCoordinates = coordinates => {
     dispatch({
       type: "SET_COORDS",
       payload: coordinates
+    });
+  };
+
+  const setTopic = topic => {
+    dispatch({
+      type: "SET_TOPIC",
+      payload: topic
     });
   };
 
@@ -46,7 +53,8 @@ const UserState = props => {
         login,
         logout,
         setRoute,
-        setCoordinates
+        setCoordinates,
+        setTopic
       }}
     >
       {props.children}

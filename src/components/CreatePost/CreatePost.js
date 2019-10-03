@@ -59,7 +59,14 @@ const CreatePost = () => {
     <div className="createPost__container">
       <div className="createPost__container--top">
         <div className="createPost__header">
-          <span className="createPost__header--forum">Forums</span>
+          <span
+            className="createPost__header--forum"
+            onClick={() => {
+              setRoute("forum");
+            }}
+          >
+            Forums
+          </span>
           <span className="createPost__header--create">Create a Post</span>
         </div>
         <button

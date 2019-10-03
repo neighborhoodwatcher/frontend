@@ -13,7 +13,7 @@ const Navbar = () => {
         Home
       </Link>
       <Link className="nav__item" onClick={() => setRoute("forum")}>
-        Forum
+        Forums
       </Link>
       <Link className="nav__item" onClick={() => setRoute("settings")}>
         Settings
