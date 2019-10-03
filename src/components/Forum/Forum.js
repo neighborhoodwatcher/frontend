@@ -6,7 +6,7 @@ import "./Forum.scss";
 
 const Forum = () => {
   const userContext = useContext(UserContext);
-  const { setRoute } = userContext;
+  const { setRoute, setTopic } = userContext;
 
   return (
     <div className="forum__container">
@@ -25,18 +25,25 @@ const Forum = () => {
       <div className="forum__container--bottom">
         <div className="forum__overview">
           <FetchPosts topic={"general"} />
-          <FetchPosts topic={"music"}/>
-          <FetchPosts topic={"recreational"}/>
-          <FetchPosts topic={"fitness"}/>
-          <FetchPosts topic={"tech"}/>
-          <FetchPosts topic={"other"}/>
+          <FetchPosts topic={"music"} />
+          <FetchPosts topic={"recreational"} />
+          <FetchPosts topic={"fitness"} />
+          <FetchPosts topic={"tech"} />
+          <FetchPosts topic={"other"} />
         </div>
 
         <div className="forum__topicList">
           <h3 className="forum__topicList--header">Topic List</h3>
           <hr className="forum__topicList--line" />
           <div className="forum__topicList--topic">
-            <h3>#General</h3>
+            <h3
+              onClick={() => {
+                setRoute("forumTopic");
+                setTopic("general");
+              }}
+            >
+              #General
+            </h3>
             <h3>#Music</h3>
             <h3>#Recreational</h3>
             <h3>#Fitness</h3>

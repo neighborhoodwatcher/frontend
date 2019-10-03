@@ -7,7 +7,7 @@ import "./FetchPosts.scss";
 const FetchPosts = ({ topic }) => {
   const GET_POSTS = gql`
     query getPosts($topic: String!) {
-      posts(where: { topic: { _ilike: $topic } }, limit: 3) {
+      posts(where: { topic: { _ilike: $topic } }) {
         title
         body
         topic
@@ -31,7 +31,7 @@ const FetchPosts = ({ topic }) => {
       {loading ? (
         <h2>Loading...</h2>
       ) : (
-        data.posts.map(post => (
+        data.posts.slice(0, 3).map(post => (
           <div className="posts__small--container">
             <div className="posts__small--title">{post.title}</div>
             <div className="posts__small--info">
