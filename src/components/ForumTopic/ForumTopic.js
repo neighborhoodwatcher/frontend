@@ -22,6 +22,7 @@ const ForumTopic = ({ topic }) => {
 
       <div className="forumTopic__container--bottom">
         <FetchPosts topic={topic} />
+        
       </div>
     </div>
   );

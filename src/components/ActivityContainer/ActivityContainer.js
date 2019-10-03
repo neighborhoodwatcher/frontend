@@ -21,7 +21,7 @@ const ActivityContainer = () => {
       {route === "homepage" ? <LocalEvents /> : ""}
       {route === "createEvent" ? <CreateEvent /> : ""}
       {route === "forum" ? <Forum /> : ""}
-      {route === "forumTopic" ? <ForumTopic topic={topic} /> : ""}
+      {route === "forumTopic" ? <ForumTopic topic={topic} size="large"/> : ""}
       {route === "createPost" ? <CreatePost /> : ""}
       {route === "settings" ? <Settings /> : ""}
     </div>

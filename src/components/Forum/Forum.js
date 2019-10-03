@@ -24,12 +24,12 @@ const Forum = () => {
 
       <div className="forum__container--bottom">
         <div className="forum__overview">
-          <FetchPosts topic={"general"} />
-          <FetchPosts topic={"music"} />
-          <FetchPosts topic={"recreational"} />
-          <FetchPosts topic={"fitness"} />
-          <FetchPosts topic={"tech"} />
-          <FetchPosts topic={"other"} />
+          <FetchPosts topic={"general"} size="small" />
+          <FetchPosts topic={"music"} size="small" />
+          <FetchPosts topic={"recreational"} size="small" />
+          <FetchPosts topic={"fitness"} size="small" />
+          <FetchPosts topic={"tech"} size="small" />
+          <FetchPosts topic={"other"} size="small" />
         </div>
 
         <div className="forum__topicList">
@@ -44,7 +44,14 @@ const Forum = () => {
             >
               #General
             </h3>
-            <h3>#Music</h3>
+            <h3
+              onClick={() => {
+                setRoute("forumTopic");
+                setTopic("music");
+              }}
+            >
+              #Music
+            </h3>
             <h3>#Recreational</h3>
             <h3>#Fitness</h3>
             <h3>#Tech</h3>
