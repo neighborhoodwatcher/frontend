@@ -11,6 +11,7 @@ const FetchPosts = ({ topic }) => {
         title
         body
         topic
+        created_at
         user {
           displayName
         }
@@ -24,7 +25,7 @@ const FetchPosts = ({ topic }) => {
 
   return (
     <div className="posts__small">
-      <span className="posts__small--topic">{topic}</span>
+      <span className="posts__small--topic">#{topic}</span>
       <hr className="posts__small--line" />
 
       {loading ? (
@@ -33,7 +34,12 @@ const FetchPosts = ({ topic }) => {
         data.posts.map(post => (
           <div className="posts__small--container">
             <div className="posts__small--title">{post.title}</div>
-            <div className="posts__small--user">{post.user.displayName}</div>
+            <div className="posts__small--info">
+              <div className="posts__small--infoUser">
+                {post.user.displayName}
+              </div>
+              <div className="posts_small--infoDate">{post.created_at}</div>
+            </div>
           </div>
         ))
       )}

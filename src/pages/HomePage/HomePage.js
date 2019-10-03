@@ -33,7 +33,6 @@ const HomePage = () => {
   const { loading, error, data } = useQuery(GET_USERS, {
     variables: { user_uid: userUID }
   });
-  console.log("data", data);
 
   const createUserInDB = (data, insert_users) => {
     if (data && data.users.length === 0) {

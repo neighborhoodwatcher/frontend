@@ -15,6 +15,7 @@
   border: 1px solid black;
   width: 85%;
 }
+
 .posts__small--container {
   border: 2px solid black;
   border-radius: 10px;
@@ -24,16 +25,25 @@
   margin: 0 0 10px 0;
 
   font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 .posts__small--title {
   font-weight: bold;
 
   padding: 5px 0 0 10px;
 }
-.posts__small--user {
+.posts__small--info {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px 0 10px;
+}
+.posts__small--infoUser {
   font-weight: lighter;
   font-size: 0.8rem;
   text-transform: uppercase;
-
-  padding: 5px 0 0 10px;
+}
+.posts_small--infoDate {
+  font-weight: lighter;
+  font-size: 0.8rem;
 }

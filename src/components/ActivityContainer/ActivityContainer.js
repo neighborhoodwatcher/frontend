@@ -11,9 +11,7 @@ import CreatePost from "../CreatePost/CreatePost";
 
 const ActivityContainer = () => {
   const userContext = useContext(UserContext);
-  console.log(userContext);
   const route = userContext.userState.route;
-  console.log("route", route);
 
   return (
     <div className="activity-container">
