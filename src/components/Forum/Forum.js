@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import UserContext from "../../context/userContext";
 import FetchPosts from "../FetchPosts/FetchPosts";
+import ForumTopicList from "../ForumTopicList/ForumTopicList";
 import "./Forum.scss";
 
 const Forum = () => {
@@ -32,32 +33,7 @@ const Forum = () => {
           <FetchPosts topic={"other"} size="small" />
         </div>
 
-        <div className="forum__topicList">
-          <h3 className="forum__topicList--header">Topic List</h3>
-          <hr className="forum__topicList--line" />
-          <div className="forum__topicList--topic">
-            <h3
-              onClick={() => {
-                setRoute("forumTopic");
-                setTopic("general");
-              }}
-            >
-              #General
-            </h3>
-            <h3
-              onClick={() => {
-                setRoute("forumTopic");
-                setTopic("music");
-              }}
-            >
-              #Music
-            </h3>
-            <h3>#Recreational</h3>
-            <h3>#Fitness</h3>
-            <h3>#Tech</h3>
-            <h3>#Other</h3>
-          </div>
-        </div>
+        <ForumTopicList />
       </div>
     </div>
   );
