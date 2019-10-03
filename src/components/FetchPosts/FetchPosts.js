@@ -7,7 +7,7 @@ import "./FetchPosts.scss";
 
 const FetchPosts = ({ topic, size }) => {
   const userContext = useContext(UserContext);
-  const { setRoute, setTopic } = userContext;
+  const { setRoute, setTopic, setPostID } = userContext;
 
   const GET_POSTS = gql`
     query getPosts($topic: String!) {
@@ -16,6 +16,7 @@ const FetchPosts = ({ topic, size }) => {
         body
         topic
         created_at
+        id
         user {
           displayName
         }
@@ -45,7 +46,15 @@ const FetchPosts = ({ topic, size }) => {
           <h2>Loading...</h2>
         ) : (
           data.posts.slice(0, 3).map(post => (
-            <div className="posts__small--container">
+            <div
+              className="posts__small--container"
+              onClick={() => {
+                setRoute("forumPost");
+                setTopic(topic);
+                setPostID(post.id);
+              }}
+            >
+              {console.log(post.id)}
               <div className="posts__small--title">{post.title}</div>
               <div className="posts__small--info">
                 <div className="posts__small--infoUser">
@@ -64,7 +73,7 @@ const FetchPosts = ({ topic, size }) => {
         {loading ? (
           <h2>Loading...</h2>
         ) : (
-          data.posts.slice(0, 3).map(post => (
+          data.posts.map(post => (
             <div className="posts__large--container">
               <div className="posts__large--title">{post.title}</div>
               <div className="posts__large--info">
