@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 
 import UserContext from "../../context/userContext";
 import FetchPosts from "../FetchPosts/FetchPosts";
+import ForumTopicList from "../ForumTopicList/ForumTopicList";
+import "./ForumTopic.scss";
 
 const ForumTopic = ({ topic }) => {
   const userContext = useContext(UserContext);
@@ -17,12 +19,14 @@ const ForumTopic = ({ topic }) => {
         <button
           className="forumTopic__header--button"
           onClick={() => setRoute("createPost")}
-        ></button>
+        >
+          Create a Post
+        </button>
       </div>
 
       <div className="forumTopic__container--bottom">
         <FetchPosts topic={topic} />
-        
+        <ForumTopicList />
       </div>
     </div>
   );
