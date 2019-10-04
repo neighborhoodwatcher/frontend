@@ -32,13 +32,13 @@ const FetchPost = () => {
   }
   const post = data.posts[0];
   return (
-    <div className="posts__large">
-      <div className="posts__large--container">
-        <div>{post.body}</div>
-        <div className="posts__large--info">
-          <div className="posts__large--infoUser">{post.user.displayName}</div>
-          <div className="posts_large--infoDate">{post.created_at}</div>
+    <div className="post__large">
+      <div className="post__large--container">
+        <div className="post__large--info">
+          <div className="post__large--infoUser">{post.user.displayName}</div>
+          <div className="post__large--infoDate">{post.created_at}</div>
         </div>
+        <div className="post__large--body">{post.body}</div>
       </div>
     </div>
   );
