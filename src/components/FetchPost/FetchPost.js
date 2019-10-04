@@ -18,6 +18,7 @@ const FetchPost = () => {
         created_at
         user {
           displayName
+          photo_URL
         }
       }
     }
@@ -34,6 +35,11 @@ const FetchPost = () => {
   return (
     <div className="post__large">
       <div className="post__large--container">
+        <img
+          src={post.user.photo_URL}
+          alt="User Avatar"
+          className="post__large--image"
+        />
         <div className="post__large--info">
           <div className="post__large--infoUser">{post.user.displayName}</div>
           <div className="post__large--infoDate">{post.created_at}</div>
