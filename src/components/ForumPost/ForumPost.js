@@ -28,6 +28,13 @@ const ForumPost = ({ topic, postTitle }) => {
 
   const [insert_post_comments] = useMutation(CREATE_POST_COMMENT);
 
+  const createComment = (insert_post_comments, postID, comment, userID) => {
+    insert_post_comments({variables: {
+      post_id: postID, text: comment, user_id: userID
+    }})
+    setComment("")
+  }
+
   return (
     <div className="forumPost__container">
       <div className="forumPost__container--top">
@@ -73,9 +80,7 @@ const ForumPost = ({ topic, postTitle }) => {
             />
             <button
               className="forumPost__form--button"
-              onClick={() => insert_post_comments({variables: {
-                post_id: postID, text: comment, user_id: userID
-              }})}
+              onClick={() => createComment(insert_post_comments, postID, comment, userID)}
             >
               Add Comment
             </button>
