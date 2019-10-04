@@ -25,6 +25,7 @@
   height: 50px;
   width: 250px;
   margin: 0 0 10px 0;
+  position: relative;
 
   font-family: "Roboto", sans-serif;
   display: flex;
@@ -34,15 +35,23 @@
   cursor: pointer;
   background: #e2e3e3;
 }
+.posts__small--image {
+  border-radius: 50%;
+  border: 2px solid black;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  margin: -2px 0 0 -15px;
+}
 .posts__small--title {
   font-weight: bold;
 
-  padding: 5px 0 0 10px;
+  padding: 5px 0 0 45px;
 }
 .posts__small--info {
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px 0 10px;
+  padding: 5px 10px 0 45px;
 }
 .posts__small--infoUser {
   font-weight: lighter;
@@ -75,15 +84,23 @@
   cursor: pointer;
   background: #e2e3e3;
 }
+.posts__large--image {
+  border-radius: 50%;
+  border: 2px solid black;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  margin: -2px 0 0 -15px;
+}
 .posts__large--title {
   font-weight: bold;
 
-  padding: 5px 0 0 10px;
+  padding: 5px 0 0 45px;
 }
 .posts__large--info {
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px 0 10px;
+  padding: 5px 10px 0 45px;
 }
 .posts__large--infoUser {
   font-weight: lighter;

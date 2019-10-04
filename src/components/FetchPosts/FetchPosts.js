@@ -19,6 +19,7 @@ const FetchPosts = ({ topic, size }) => {
         id
         user {
           displayName
+          photo_URL
         }
       }
     }
@@ -55,6 +56,11 @@ const FetchPosts = ({ topic, size }) => {
                 setPostTitle(post.title);
               }}
             >
+              <img
+                src={post.user.photo_URL}
+                alt="User Avatar"
+                className="posts__small--image"
+              />
               <div className="posts__small--title">{post.title}</div>
               <div className="posts__small--info">
                 <div className="posts__small--infoUser">
@@ -83,6 +89,11 @@ const FetchPosts = ({ topic, size }) => {
                 setPostTitle(post.title);
               }}
             >
+              <img
+                src={post.user.photo_URL}
+                alt="User Avatar"
+                className="posts__large--image"
+              />
               <div className="posts__large--title">{post.title}</div>
               <div className="posts__large--info">
                 <div className="posts__large--infoUser">
