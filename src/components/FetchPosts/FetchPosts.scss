@@ -30,9 +30,9 @@
   display: flex;
   flex-direction: column;
 }
-.posts__small--container:hover{
+.posts__small--container:hover {
   cursor: pointer;
-  background: #E2E3E3;
+  background: #e2e3e3;
 }
 .posts__small--title {
   font-weight: bold;
@@ -70,6 +70,10 @@
   font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
+}
+.posts__large--container:hover {
+  cursor: pointer;
+  background: #e2e3e3;
 }
 .posts__large--title {
   font-weight: bold;

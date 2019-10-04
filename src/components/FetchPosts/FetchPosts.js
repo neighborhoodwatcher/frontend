@@ -74,7 +74,15 @@ const FetchPosts = ({ topic, size }) => {
           <h2>Loading...</h2>
         ) : (
           data.posts.map(post => (
-            <div className="posts__large--container">
+            <div
+              className="posts__large--container"
+              onClick={() => {
+                setRoute("forumPost");
+                setTopic(topic);
+                setPostID(post.id);
+                setPostTitle(post.title);
+              }}
+            >
               <div className="posts__large--title">{post.title}</div>
               <div className="posts__large--info">
                 <div className="posts__large--infoUser">
