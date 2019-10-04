@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
 import UserContext from "../../context/userContext";
 import ForumTopicList from "../ForumTopicList/ForumTopicList";
@@ -9,8 +11,22 @@ import "./ForumPost.scss";
 const ForumPost = ({ topic, postTitle }) => {
   const userContext = useContext(UserContext);
   const { setRoute, setTopic } = userContext;
+  const postID = userContext.userState.postID;
+  const userID = userContext.userState.user.uid
 
   const [comment, setComment] = useState("");
+
+  const CREATE_POST_COMMENT = gql`
+    mutation createPostComment($post_id: Int!, $text: String!, $user_id: String!) {
+      insert_post_comments(
+        objects: { post_id: $post_id, text: $text, user_id: $user_id }
+      ) {
+        affected_rows
+      }
+    }
+  `;
+
+  const [insert_post_comments] = useMutation(CREATE_POST_COMMENT);
 
   return (
     <div className="forumPost__container">
@@ -57,9 +73,9 @@ const ForumPost = ({ topic, postTitle }) => {
             />
             <button
               className="forumPost__form--button"
-              onClick={() =>
-                alert("Make the mutation already!!!")
-              }
+              onClick={() => insert_post_comments({variables: {
+                post_id: postID, text: comment, user_id: userID
+              }})}
             >
               Add Comment
             </button>
