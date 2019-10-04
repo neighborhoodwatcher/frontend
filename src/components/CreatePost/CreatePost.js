@@ -9,6 +9,8 @@ const CreatePost = () => {
   const [titleState, setTitleState] = useState("");
   const [bodyState, setBodyState] = useState("");
   const [topicState, setTopicState] = useState("");
+  const [checked, setChecked] = useState("General");
+
   const userContext = useContext(UserContext);
   const { setRoute } = userContext;
 
@@ -55,6 +57,11 @@ const CreatePost = () => {
     setRoute("forum");
   };
 
+  const handleRadialChange = e => {
+    setChecked(e.target.value);
+    setTopicState(e.target.value);
+  };
+
   return (
     <div className="createPost__container">
       <div className="createPost__container--top">
@@ -69,34 +76,10 @@ const CreatePost = () => {
           </span>
           <span className="createPost__header--create">Create a Post</span>
         </div>
-        <button
-          className="createPost__header--button"
-          onClick={() =>
-            createPost(insert_posts, titleState, bodyState, topicState, uid)
-          }
-        >
-          Submit
-        </button>
       </div>
 
       <div className="createPost__container--bottom">
         <div className="createPost__form">
-          <div>
-            <p className="createPost__form--field">Topic</p>
-            <select
-              onChange={e => setTopicState(e.target.value)}
-              className="createPost__form--dropdown"
-              value={topicState}
-            >
-              <option>Pick One</option>
-              <option value="General">General</option>
-              <option value="Music">Music</option>
-              <option value="Recreational">Recreational</option>
-              <option value="Fitness">Fitness</option>
-              <option value="Tech">Tech</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
           <div>
             <p className="createPost__form--field">Title</p>
             <input
@@ -114,9 +97,75 @@ const CreatePost = () => {
             />
           </div>
         </div>
-        {/* <div className="post-right-container"> */}
+        <div className="createPost__radial">
+          <p className="createPost__radial--header">Topic</p>
 
-        {/* </div> */}
+          <div className="createPost__radial--selection">
+            <label>
+              <input
+                type="radio"
+                value="General"
+                checked={checked === "General"}
+                onChange={e => handleRadialChange(e)}
+              />
+              #General
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Music"
+                checked={checked === "Music"}
+                onChange={e => handleRadialChange(e)}
+              />
+              #Music
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Recreational"
+                checked={checked === "Recreational"}
+                onChange={e => handleRadialChange(e)}
+              />
+              #Recreational
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Fitness"
+                checked={checked === "Fitness"}
+                onChange={e => handleRadialChange(e)}
+              />
+              #Fitness
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Tech"
+                checked={checked === "Tech"}
+                onChange={e => handleRadialChange(e)}
+              />
+              #Tech
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Other"
+                checked={checked === "Other"}
+                onChange={e => handleRadialChange(e)}
+              />
+              #Other
+            </label>
+          </div>
+
+          <button
+            className="createPost__radial--button"
+            onClick={() =>
+              createPost(insert_posts, titleState, bodyState, topicState, uid)
+            }
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );
