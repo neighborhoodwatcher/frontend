@@ -34,7 +34,7 @@ const FetchPost = () => {
   return (
     <div className="posts__large">
       <div className="posts__large--container">
-      <div>{post.body}</div>
+        <div>{post.body}</div>
         <div className="posts__large--info">
           <div className="posts__large--infoUser">{post.user.displayName}</div>
           <div className="posts_large--infoDate">{post.created_at}</div>

@@ -18,7 +18,7 @@ const HomePage = () => {
   const userUID = userContext.userState.user.uid;
   const userLat = userContext.userState.coordinates.lat;
   const userLon = userContext.userState.coordinates.lng;
-  const photoURL = userContext.userState.user.photoURL
+  const photoURL = userContext.userState.user.photoURL;
 
   const [insert_users] = useMutation(CREATE_USER);
 
@@ -30,8 +30,6 @@ const HomePage = () => {
       }
     }
   `;
-
-  console.log('usercontext', userContext);
 
   const { loading, error, data } = useQuery(GET_USERS, {
     variables: { user_uid: userUID }
@@ -47,7 +45,6 @@ const HomePage = () => {
           latitude: userLat,
           longitude: userLon,
           photo_URL: photoURL
-
         }
       });
     } else if (data && data.users.length > 0) {

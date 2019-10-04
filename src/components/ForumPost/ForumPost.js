@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 
 import UserContext from "../../context/userContext";
 import ForumTopicList from "../ForumTopicList/ForumTopicList";
-import FetchPosts from "../FetchPosts/FetchPosts";
-import FetchPost from '../FetchPost/FetchPost'
+import FetchPost from "../FetchPost/FetchPost";
+import "./ForumPost.scss";
 
-const ForumPost = ({ topic }) => {
+const ForumPost = ({ topic, postTitle }) => {
   const userContext = useContext(UserContext);
-  const { setRoute } = userContext;
+  const { setRoute, setTopic } = userContext;
 
   return (
     <div className="forumPost__container">
@@ -21,8 +21,19 @@ const ForumPost = ({ topic }) => {
           >
             Forums
           </span>
-          <span className="forumPost__header--topic">#{topic}</span>
-          <span className="forumPost__header--post">Name of post</span>
+          <div className="forumPost__header--directory">
+            <span
+              className="forumPost__header--topic"
+              onClick={() => {
+                setRoute("forumTopic");
+                setTopic(topic);
+              }}
+            >
+              #{topic}
+            </span>
+            <span> > </span>
+            <span>{postTitle}</span>
+          </div>
         </div>
       </div>
 

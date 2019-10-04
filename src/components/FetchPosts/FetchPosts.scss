@@ -30,6 +30,10 @@
   display: flex;
   flex-direction: column;
 }
+.posts__small--container:hover{
+  cursor: pointer;
+  background: #E2E3E3;
+}
 .posts__small--title {
   font-weight: bold;
 

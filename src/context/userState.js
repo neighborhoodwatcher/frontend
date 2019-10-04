@@ -53,6 +53,13 @@ const UserState = props => {
     });
   };
 
+  const setPostTitle = postTitle => {
+    dispatch({
+      type: "SET_POST_TITLE",
+      payload: postTitle
+    });
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -62,7 +69,8 @@ const UserState = props => {
         setRoute,
         setCoordinates,
         setTopic,
-        setPostID
+        setPostID,
+        setPostTitle
       }}
     >
       {props.children}

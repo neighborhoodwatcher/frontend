@@ -7,7 +7,7 @@ import "./FetchPosts.scss";
 
 const FetchPosts = ({ topic, size }) => {
   const userContext = useContext(UserContext);
-  const { setRoute, setTopic, setPostID } = userContext;
+  const { setRoute, setTopic, setPostID, setPostTitle } = userContext;
 
   const GET_POSTS = gql`
     query getPosts($topic: String!) {
@@ -52,9 +52,9 @@ const FetchPosts = ({ topic, size }) => {
                 setRoute("forumPost");
                 setTopic(topic);
                 setPostID(post.id);
+                setPostTitle(post.title);
               }}
             >
-              {console.log(post.id)}
               <div className="posts__small--title">{post.title}</div>
               <div className="posts__small--info">
                 <div className="posts__small--infoUser">

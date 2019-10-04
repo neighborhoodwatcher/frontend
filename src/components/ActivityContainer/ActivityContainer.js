@@ -15,7 +15,8 @@ const ActivityContainer = () => {
   const userContext = useContext(UserContext);
   const route = userContext.userState.route;
   const topic = userContext.userState.topic;
-  const postID = userContext.userState.postID;
+  // const postID = userContext.userState.postID;
+  const postTitle = userContext.userState.postTitle;
 
   return (
     <div className="activity-container">
@@ -24,7 +25,7 @@ const ActivityContainer = () => {
       {route === "createEvent" ? <CreateEvent /> : ""}
       {route === "forum" ? <Forum /> : ""}
       {route === "forumTopic" ? <ForumTopic topic={topic} size="large" /> : ""}
-      {route === "forumPost" ? <ForumPost topic={topic} postID={postID} /> : ""}
+      {route === "forumPost" ? <ForumPost topic={topic} postTitle={postTitle}/> : ""}
       {route === "createPost" ? <CreatePost /> : ""}
       {route === "settings" ? <Settings /> : ""}
     </div>

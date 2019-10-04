@@ -1,0 +1,37 @@
+.forumPost__container {
+  width: 66%;
+  overflow: auto;
+}
+.forumPost__container--top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.forumPost__header {
+  margin: 20px 0 0 0;
+
+  font-family: "Staatliches", cursive;
+}
+.forumPost__header--forum {
+  margin: 0px 0 0 20px;
+
+  font-size: 5rem;
+}
+.forumPost__header--forum:hover {
+  cursor: pointer;
+}
+.forumPost__header--directory {
+  display: inline;
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin: 0 0 20px 30px;
+}
+.forumPost__header--topic:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.forumPost__container--bottom {
+  display: flex;
+  justify-content: space-between;
+}

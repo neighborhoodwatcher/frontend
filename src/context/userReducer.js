@@ -32,6 +32,11 @@ export default (state, action) => {
         ...state,
         postID: action.payload
       };
+    case "SET_POST_TITLE":
+      return {
+        ...state,
+        postTitle: action.payload
+      };
     default:
       return state;
   }
