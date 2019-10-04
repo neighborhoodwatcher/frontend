@@ -1,21 +1,21 @@
-.post__large {
+.comment__large {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
 }
-.post__large--container {
+.comment__large--container {
   border: 2px solid black;
   border-radius: 10px;
 
   min-height: 100px;
-  width: 550px;
+  width: 500px;
   margin: 10px 0 0 0;
 
   font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
 }
-.post__large--image {
+.comment__large--image {
   border-radius: 50%;
   border: 2px solid black;
   height: 50px;
@@ -23,22 +23,22 @@
   position: absolute;
   margin: -2px 0 0 -15px;
 }
-.post__large--info {
+.comment__large--info {
   display: flex;
   justify-content: space-between;
   padding: 5px 10px 0 45px;
   font-size: 0.8rem;
 }
-.post__large--infoUser {
+.comment__large--infoUser {
   font-weight: bold;
   // font-size: 0.8rem;
   text-transform: uppercase;
 }
-.post__large--infoDate {
+.comment__large--infoDate {
   font-weight: lighter;
   // font-size: 0.8rem;
 }
-.post__large--body {
+.comment__large--body {
   // font-weight: bold;
 
   padding: 5px 0 0 55px;

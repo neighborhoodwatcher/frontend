@@ -7,6 +7,11 @@
   align-items: center;
   justify-content: space-between;
 }
+.forumPost__container--bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
 .forumPost__header {
   margin: 20px 0 0 0;
 
@@ -30,8 +35,9 @@
   cursor: pointer;
   text-decoration: underline;
 }
-
-.forumPost__container--bottom {
-  display: flex;
-  justify-content: space-between;
+.forumPost__discussion {
+  margin: 0 0 0 20px;
+}
+.forumPost__discussion--comments{
+  margin: 0 0 0 50px;
 }

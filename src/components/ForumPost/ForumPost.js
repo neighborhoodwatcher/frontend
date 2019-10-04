@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import UserContext from "../../context/userContext";
 import ForumTopicList from "../ForumTopicList/ForumTopicList";
 import FetchPost from "../FetchPost/FetchPost";
+import FetchPostComments from "../FetchPostComments/FetchPostComments";
 import "./ForumPost.scss";
 
 const ForumPost = ({ topic, postTitle }) => {
@@ -38,7 +39,13 @@ const ForumPost = ({ topic, postTitle }) => {
       </div>
 
       <div className="forumPost__container--bottom">
-        <FetchPost />
+        <div className="forumPost__discussion">
+          <FetchPost />
+          <div className="forumPost__discussion--comments">
+            <FetchPostComments />
+          </div>
+        </div>
+
         <ForumTopicList />
       </div>
     </div>

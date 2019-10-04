@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
-import "./FetchPost.scss";
 import UserContext from "../../context/userContext";
+import "./FetchPost.scss";
 
 const FetchPost = () => {
   const userContext = useContext(UserContext);
