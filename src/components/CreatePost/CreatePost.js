@@ -9,7 +9,7 @@ const CreatePost = () => {
   const [titleState, setTitleState] = useState("");
   const [bodyState, setBodyState] = useState("");
   const [topicState, setTopicState] = useState("");
-  const [checked, setChecked] = useState("General");
+  const [checked, setChecked] = useState("");
 
   const userContext = useContext(UserContext);
   const { setRoute } = userContext;

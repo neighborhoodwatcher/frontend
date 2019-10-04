@@ -67,26 +67,6 @@
   margin: 0 0 0 0;
 }
 
-.localEvents__recentDiscussions {
-  display: flex;
-  flex-direction: column;
-  width: 48%;
-  align-items: center;
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: #ffffff;
-  border-radius: 25px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #000000;
-}
-
 .localEvents__event {
   border: 2px solid black;
   border-radius: 10px;
@@ -135,4 +115,32 @@
   text-transform: uppercase;
 
   margin: 55px 0 0 10px;
+}
+
+.localEvents__recentDiscussions {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  align-items: center;
+}
+.localEvents__recentDiscussions--header{
+  margin: 10px auto;
+
+  font-family: "Staatliches", cursive;
+  font-weight: 500;
+  font-size: 1.7rem;
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
 }

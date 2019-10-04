@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import UserContext from "../../context/userContext";
 import ForumTopicList from "../ForumTopicList/ForumTopicList";
@@ -9,6 +9,8 @@ import "./ForumPost.scss";
 const ForumPost = ({ topic, postTitle }) => {
   const userContext = useContext(UserContext);
   const { setRoute, setTopic } = userContext;
+
+  const [comment, setComment] = useState("");
 
   return (
     <div className="forumPost__container">
@@ -41,11 +43,28 @@ const ForumPost = ({ topic, postTitle }) => {
       <div className="forumPost__container--bottom">
         <div className="forumPost__discussion">
           <FetchPost />
-          <div className="forumPost__discussion--comments">
-            <FetchPostComments />
+          <FetchPostComments className="forumPost__discussion--comments" />
+          <div className="forumPost__form">
+            <img
+              src={userContext.userState.user.photoURL}
+              alt="User Avatar"
+              className="forumPost__form--image"
+            />
+            <input
+              onChange={e => setComment(e.target.value)}
+              className="forumPost__form--input"
+              value={comment}
+            />
+            <button
+              className="forumPost__form--button"
+              onClick={() =>
+                alert("Make the mutation already!!!")
+              }
+            >
+              Add Comment
+            </button>
           </div>
         </div>
-
         <ForumTopicList />
       </div>
     </div>
