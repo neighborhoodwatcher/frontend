@@ -7,8 +7,10 @@ import "./CreateEvent.scss";
 
 const CreateEvent = () => {
   const [titleState, setTitleState] = useState("");
-  const [descriptionState, setDescriptionState] = useState("");
+  const [locationState, setLocationState] = useState("");
+  const [dateState, setDateState] = useState("");
   const [topicState, setTopicState] = useState("");
+  const [descriptionState, setDescriptionState] = useState("");
   const userContext = useContext(UserContext);
 
   const CREATE_EVENT = gql`
@@ -55,26 +57,83 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className="create-event-container">
-      <input onChange={e => setTitleState(e.target.value)} value={titleState} />
+    <div className="createEvent-container">
+      <div className="createEvent__container--top">
+        <div className="createEvent__header">
+          <span className="createEvent__header--create">Create An Event</span>
+        </div>
+      </div>
+
+      <div className="createEvent__container--bottom">
+        <div className="createEvent__form">
+          <div>
+            <div>
+              <p className="createEvent__form--field">Title</p>
+              <input
+                onChange={e => setTitleState(e.target.value)}
+                className="createEvent__form--input"
+                value={titleState}
+              />
+            </div>
+            <div>
+              <p className="createEvent__form--field">Location</p>
+              <input
+                onChange={e => setLocationState(e.target.value)}
+                className="createEvent__form--input"
+                value={locationState}
+              />
+            </div>
+            <div>
+              <p className="createEvent__form--field">Date</p>
+              <input
+                onChange={e => setDateState(e.target.value)}
+                className="createEvent__form--input"
+                value={dateState}
+              />
+            </div>
+            <div>
+              <p className="createEvent__form--field">Topic</p>
+              <input
+                onChange={e => setTopicState(e.target.value)}
+                className="createEvent__form--input"
+                value={topicState}
+              />
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <p className="createEvent__form--field">Description</p>
+              <textarea
+                onChange={e => setDescriptionState(e.target.value)}
+                className="createEvent__form--textarea"
+                value={descriptionState}
+              />
+            </div>
+            <button
+              className="createEvent__form--button"
+              onClick={() =>
+                createEvent(
+                  insert_events,
+                  titleState,
+                  descriptionState,
+                  topicState,
+                  uid
+                )
+              }
+            >
+              Create Event
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* <input onChange={e => setTitleState(e.target.value)} value={titleState} />
       <input
         onChange={e => setDescriptionState(e.target.value)}
         value={descriptionState}
       />
-      <input onChange={e => setTopicState(e.target.value)} value={topicState} />
-      <button
-        onClick={() =>
-          createEvent(
-            insert_events,
-            titleState,
-            descriptionState,
-            topicState,
-            uid
-          )
-        }
-      >
-        Create Event
-      </button>
+      <input onChange={e => setTopicState(e.target.value)} value={topicState} /> */}
     </div>
   );
 };
