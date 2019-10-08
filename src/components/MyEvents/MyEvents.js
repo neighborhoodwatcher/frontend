@@ -19,6 +19,7 @@ const MyEvents = ({userID}) => {
     variables: { id: userID }
   });
 
+  {console.log(data)}
   if(loading) {
       return (<h1>Loading...</h1>)
   }
@@ -26,8 +27,14 @@ const MyEvents = ({userID}) => {
     <div className="my_events_container">
       <span className="my_events_title">My Events</span>
       <hr className="my_events_line" />
-      <div>List of my events...</div>
-      {console.log('data', data)}
+      {/* Individual Event Card */}
+      <div>
+        {data.events.slice(0, 5).map(event => (
+          <div>
+            <p>{event.title}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
