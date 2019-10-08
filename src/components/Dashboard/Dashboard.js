@@ -8,6 +8,7 @@ import MyMarkers from '../MyMarkers/MyMarkers'
 
 const Dashboard = () => {
   const userContext = useContext(UserContext);
+  const userID = userContext.userState.user.uid
 
   return (
     <div className="dashboard">
@@ -30,7 +31,7 @@ const Dashboard = () => {
       </div>
 
       <div className="dashboard__bottom">
-        <MyEvents />
+        <MyEvents userID={userID}/>
         <MyMarkers />
       </div>
     </div>
