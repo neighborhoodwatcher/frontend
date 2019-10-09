@@ -5,6 +5,8 @@ import UserContext from "../../context/userContext";
 
 import "./CreateEvent.scss";
 
+import { GET_EVENTS } from "../../utils/GraphQL";
+
 const CreateEvent = () => {
   const [titleState, setTitleState] = useState("");
   const [locationState, setLocationState] = useState("");
@@ -12,6 +14,7 @@ const CreateEvent = () => {
   const [topicState, setTopicState] = useState("");
   const [descriptionState, setDescriptionState] = useState("");
   const userContext = useContext(UserContext);
+  const { setRoute } = userContext;
 
   const CREATE_EVENT = gql`
     mutation createEvent(
@@ -49,7 +52,8 @@ const CreateEvent = () => {
         description: descriptionState,
         topic: topicState,
         user_id: uid
-      }
+      },
+      refetchQueries: [{ query: GET_EVENTS }]
     });
     setTitleState("");
     setDescriptionState("");
@@ -112,15 +116,16 @@ const CreateEvent = () => {
             </div>
             <button
               className="createEvent__form--button"
-              onClick={() =>
+              onClick={() => {
                 createEvent(
                   insert_events,
                   titleState,
                   descriptionState,
                   topicState,
                   uid
-                )
-              }
+                );
+                setRoute("homepage");
+              }}
             >
               Create Event
             </button>

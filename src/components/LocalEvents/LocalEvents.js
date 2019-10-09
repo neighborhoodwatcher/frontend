@@ -1,24 +1,24 @@
 import React, { useContext } from "react";
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 
 import "./LocalEvents.scss";
 import UserContext from "../../context/userContext";
-
-import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
+import { GET_EVENTS } from "../../utils/GraphQL";
 
 const LocalEvents = () => {
   const userContext = useContext(UserContext);
   const { setRoute } = userContext;
 
-  const GET_EVENTS = gql`
-    {
-      events {
-        title
-        description
-        topic
-      }
-    }
-  `;
+  // const GET_EVENTS = gql`
+  //   {
+  //     events {
+  //       title
+  //       description
+  //       topic
+  //     }
+  //   }
+  // `;
 
   const { loading, error, data } = useQuery(GET_EVENTS);
 
